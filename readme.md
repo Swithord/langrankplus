@@ -2,9 +2,9 @@
 
 LangRankPlus implements source-language selection methods for cross-lingual transfer.
 
-Given a target language and a set of candidate source languages, the task is to rank sources using language-distance features and select a good transfer source.
+Given a target language and candidate source languages, the goal is to rank sources using language-distance features and select a good transfer source.
 
-Each row in the input CSV corresponds to one pair:
+Each input row corresponds to:
 
 ```text
 (target language, source language)
@@ -13,21 +13,19 @@ Each row in the input CSV corresponds to one pair:
 and contains:
 
 1. a downstream transfer score, such as `accuracy` or `f1_score`;
-2. language-distance features, such as `new_gen`, `new_typ`, `new_geo`, and `script`.
+2. distance features, such as `new_gen`, `new_typ`, `new_geo`, and `script`.
 
 ---
 
 ## Method families
 
-LangRankPlus compares three kinds of selectors.
-
 | Family | Uses transfer labels for fitting? | What is fitted? | Examples |
 |---|---:|---|---|
 | Fully fixed rules | No | Nothing | `single_*`, `composite_equal`, `rrf_equal` |
-| Fitted fixed-form selectors | Yes | A few weights/hyperparameters | `composite_offline_*`, `rrf_offline_*` |
-| Supervised LangRank-style rankers | Yes | A flexible ranking model | `lightgbm_lambdarank`, `mlp_listnet` |
+| Fitted fixed-form rankers | Yes | Simple pairwise-trained weights / `rrf_k` | `composite_pairwise_*`, `rrf_pairwise_*` |
+| Supervised LangRank-style rankers | Yes | Flexible ranking model | `lightgbm_lambdarank`, `mlp_listnet` |
 
-The main distinction is **not** whether labels are used. In nested evaluation, fitted composite/RRF and supervised LangRank-style rankers use the same fitting queries. The distinction is the fitted scoring class:
+In nested evaluation, fitted composite/RRF and supervised LangRank-style rankers use the same fitting queries. They differ in model capacity:
 
 ```text
 composite/RRF:
@@ -64,9 +62,8 @@ langrankplus/
     ├── metrics.py
     ├── validation.py
     ├── conformal.py
-    ├── offline/
-    │   └── calibration.py
     └── rankers/
+        ├── base.py
         ├── single.py
         ├── composite.py
         ├── rrf.py
@@ -79,7 +76,7 @@ langrankplus/
 
 ## Data format
 
-Each CSV should contain one row per target-source pair. For example:
+Each CSV should contain one row per target-source pair:
 
 ```text
 task_lang,transfer_lang,accuracy,f1_score,new_gen,new_typ,new_geo,script
@@ -92,7 +89,7 @@ where:
 * `accuracy` and `f1_score` are downstream transfer scores;
 * `new_gen`, `new_typ`, `new_geo`, and `script` are distance features.
 
-Lower distance values are assumed to mean closer languages and therefore better candidate sources.
+Lower distance values are assumed to mean closer languages and better candidate sources.
 
 For multiple datasets, pass multiple CSVs. The loader adds a `dataset` column using each file stem unless explicit dataset names are provided.
 
@@ -116,20 +113,18 @@ These methods do not use transfer-performance labels.
 
 `single_*` ranks by one distance feature.  
 `composite_equal` averages normalized distances.  
-`rrf_equal` combines within-query distance ranks using reciprocal rank fusion.
+`rrf_equal` combines within-query feature ranks using reciprocal rank fusion.
 
----
-
-### Fitted fixed-form selectors
+### Fitted fixed-form rankers
 
 ```text
-composite_offline_nested
-rrf_offline_nested
-composite_offline_frozen
-rrf_offline_frozen
+composite_pairwise_nested
+rrf_pairwise_nested
+composite_pairwise_frozen
+rrf_pairwise_frozen
 ```
 
-`composite_offline_*` fits nonnegative weights in
+`composite_pairwise_*` fits nonnegative weights in
 
 ```text
 score(target, source) = - sum_m w_m distance_m(target, source),
@@ -142,15 +137,13 @@ w_m >= 0
 sum_m w_m = 1.
 ```
 
-`rrf_offline_*` fits weights and `rrf_k` in
+`rrf_pairwise_*` fits weights and selects `rrf_k` in
 
 ```text
 RRF(source) = sum_m w_m / (rrf_k + rank_m(source)).
 ```
 
-Nested fitting is used for same-benchmark evaluation. Frozen fitting is used when weights are fitted on separate historical data and evaluated on a new dataset.
-
----
+Both are trained with a pairwise ranking surrogate over sources within the same target query.
 
 ### Supervised LangRank-style rankers
 
@@ -159,7 +152,7 @@ lightgbm_lambdarank
 mlp_listnet
 ```
 
-These train supervised ranking models from labelled transfer results. In nested evaluation, they use the same fitting queries as `composite_offline_nested` and `rrf_offline_nested`.
+These train supervised ranking models from labelled transfer results.
 
 ---
 
@@ -185,7 +178,7 @@ For each held-out query:
 
 ```text
 1. Remove the held-out query.
-2. Fit nested composite/RRF and supervised rankers on the same fitting queries.
+2. Fit pairwise composite/RRF and supervised rankers on the same fitting queries.
 3. Score all candidate sources for the held-out query.
 4. Select the source with the highest predicted score.
 5. Evaluate using the observed held-out transfer scores.
@@ -221,7 +214,7 @@ Instead of returning one source,
 selected source = argmax_source score(target, source),
 ```
 
-it returns a set:
+it returns:
 
 ```text
 C(target) = {sources whose scores are close enough to the top score}.
@@ -260,7 +253,7 @@ conformal_empty_rate
 conformal_best_in_set_performance_loss
 ```
 
-These should be interpreted as a coverage-size tradeoff.
+These should be read as a coverage-size tradeoff.
 
 ---
 
@@ -280,7 +273,7 @@ The summary file contains one row per method. The per-fold file contains one row
 
 ## Main same-benchmark evaluation
 
-Run the full SIB200 comparison with nested fitted composite/RRF, supervised rankers, and conformal sets:
+Run the full SIB200 comparison:
 
 ```bash
 python main.py evaluate \
@@ -291,7 +284,10 @@ python main.py evaluate \
   --include_conformal \
   --conformal_alpha 0.1 \
   --conformal_cal_size 0.2 \
-  --n_calibration_samples 5000 \
+  --n_opt_steps 1000 \
+  --learning_rate 0.05 \
+  --max_pairs_per_query 5000 \
+  --score_scale 10.0 \
   --val_size 0 \
   --outdir artifacts/evaluation_sib200_nested_conformal
 ```
@@ -306,8 +302,8 @@ single_new_geo
 single_script
 composite_equal
 rrf_equal
-composite_offline_nested
-rrf_offline_nested
+composite_pairwise_nested
+rrf_pairwise_nested
 lightgbm_lambdarank
 mlp_listnet
 ```
@@ -323,26 +319,30 @@ python main.py evaluate \
   --include_conformal \
   --conformal_alpha 0.1 \
   --conformal_cal_size 0.2 \
-  --n_calibration_samples 5000 \
+  --n_opt_steps 1000 \
   --val_size 0 \
   --outdir artifacts/evaluation_sib200_nested_conformal_f1
 ```
 
 ---
 
-## Fit frozen weights
+## Fit frozen rankers
 
-Fit composite/RRF weights for later frozen evaluation or inference:
+Fit pairwise composite/RRF rankers for frozen evaluation or inference:
 
 ```bash
 python main.py train \
   --csv data/sib200.csv \
   --performance_col accuracy \
   --features new_gen new_typ new_geo script \
+  --n_opt_steps 5000 \
+  --learning_rate 0.05 \
+  --max_pairs_per_query 5000 \
+  --score_scale 10.0 \
   --outdir artifacts/offline_calibration_sib200
 ```
 
-This writes files such as:
+This writes:
 
 ```text
 artifacts/offline_calibration_sib200/composite_accuracy.json
@@ -361,9 +361,9 @@ python main.py train \
 
 ---
 
-## Evaluate frozen weights
+## Evaluate frozen rankers
 
-Use frozen fitted weights when the fitting data and evaluation data are separate:
+Use frozen fitted rankers when fitting data and evaluation data are separate:
 
 ```bash
 python main.py evaluate \
@@ -383,7 +383,7 @@ python main.py evaluate \
 
 ## Online inference
 
-If a new CSV has distance features but no transfer-performance labels:
+If a new CSV has distance features but no transfer labels:
 
 ```bash
 python main.py infer \
@@ -416,7 +416,7 @@ The main same-benchmark Slurm script is:
 sbatch slurm/run_eval_nested.slurm
 ```
 
-It runs the full comparison with nested fitted composite/RRF and conformal evaluation enabled by default.
+It runs nested pairwise composite/RRF, supervised rankers, fixed baselines, and conformal evaluation.
 
 See:
 
@@ -433,19 +433,19 @@ for the Slurm workflow.
 Use nested results for same-benchmark comparisons:
 
 ```text
-composite_offline_nested
-rrf_offline_nested
+composite_pairwise_nested
+rrf_pairwise_nested
 lightgbm_lambdarank
 mlp_listnet
 ```
 
-These methods use the same fitting queries; they differ in model capacity.
+These methods use the same fitting queries and differ in model capacity.
 
 Use frozen results for cross-dataset or deployment-style evaluation:
 
 ```text
-composite_offline_frozen
-rrf_offline_frozen
+composite_pairwise_frozen
+rrf_pairwise_frozen
 ```
 
-Conformal results should be read as a coverage-size tradeoff. High coverage is only useful if the conformal source sets are not too large.
+Conformal results should be interpreted as a coverage-size tradeoff. High coverage is useful only if the source sets are reasonably small.
