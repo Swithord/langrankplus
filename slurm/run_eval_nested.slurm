@@ -34,6 +34,7 @@ NORMALIZER="${NORMALIZER:-minmax}"
 
 OUT_DIR="${OUT_DIR:-artifacts/evaluation_sib200_nested}"
 
+# means the number of candidate weight vectors searched
 N_CALIBRATION_SAMPLES="${N_CALIBRATION_SAMPLES:-500}"
 RRF_K_GRID="${RRF_K_GRID:-1 5 10 20 40 60 100}"
 

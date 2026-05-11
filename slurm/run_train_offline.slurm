@@ -27,7 +27,8 @@ SOURCE_COL="${SOURCE_COL:-transfer_lang}"
 DATASET_COL="${DATASET_COL:-dataset}"
 
 METHODS="${METHODS:-composite rrf}"
-N_SAMPLES="${N_SAMPLES:-50000}"
+# meaning number of candidate weights
+N_SAMPLES="${N_SAMPLES:-5000}"
 RRF_K_GRID="${RRF_K_GRID:-1 5 10 20 40 60 100}"
 RANDOM_STATE="${RANDOM_STATE:-42}"
 
