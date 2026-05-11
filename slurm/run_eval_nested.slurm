@@ -34,8 +34,10 @@ NORMALIZER="${NORMALIZER:-minmax}"
 
 OUT_DIR="${OUT_DIR:-artifacts/evaluation_sib200_nested}"
 
-# means the number of candidate weight vectors searched
-N_CALIBRATION_SAMPLES="${N_CALIBRATION_SAMPLES:-500}"
+N_OPT_STEPS="${N_OPT_STEPS:-1000}"
+LEARNING_RATE="${LEARNING_RATE:-0.05}"
+MAX_PAIRS_PER_QUERY="${MAX_PAIRS_PER_QUERY:-5000}"
+SCORE_SCALE="${SCORE_SCALE:-10.0}"
 RRF_K_GRID="${RRF_K_GRID:-1 5 10 20 40 60 100}"
 
 INCLUDE_CONFORMAL="${INCLUDE_CONFORMAL:-1}"
@@ -96,7 +98,10 @@ echo "FEATURES: $FEATURES"
 echo "PERFORMANCE_COL: $PERFORMANCE_COL"
 echo "OUT_DIR: $TASK_OUT_DIR"
 echo "VAL_SIZE: $VAL_SIZE"
-echo "N_CALIBRATION_SAMPLES: $N_CALIBRATION_SAMPLES"
+echo "N_OPT_STEPS: $N_OPT_STEPS"
+echo "LEARNING_RATE: $LEARNING_RATE"
+echo "MAX_PAIRS_PER_QUERY: $MAX_PAIRS_PER_QUERY"
+echo "SCORE_SCALE: $SCORE_SCALE"
 echo "RRF_K_GRID: $RRF_K_GRID"
 echo "INCLUDE_CONFORMAL: $INCLUDE_CONFORMAL"
 
@@ -108,7 +113,10 @@ python -c "import torch; print('torch ok')"
 
 EXTRA_FLAGS=(
   --include_nested_offline
-  --n_calibration_samples "$N_CALIBRATION_SAMPLES"
+  --n_opt_steps "$N_OPT_STEPS"
+  --learning_rate "$LEARNING_RATE"
+  --max_pairs_per_query "$MAX_PAIRS_PER_QUERY"
+  --score_scale "$SCORE_SCALE"
   --rrf_k_grid "${RRF_K_ARRAY[@]}"
 )
 

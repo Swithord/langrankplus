@@ -16,70 +16,63 @@ from src.offline.calibration import (
     load_calibration,
     ranker_from_calibration,
 )
-from src.rankers.single import SingleFeatureRanker
 from src.rankers.composite import CompositeDistanceRanker
-from src.rankers.rrf import RRFRanker
-from src.rankers.random import RandomRanker
 from src.rankers.lightgbm import LightGBMRanker
 from src.rankers.mlp import MLPRanker
+from src.rankers.random import RandomRanker
+from src.rankers.rrf import RRFRanker
+from src.rankers.single import SingleFeatureRanker
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Compare source-language selection methods.",
     )
-    parser.add_argument('--csv', nargs='+', required=True,
-                        help="One or more transfer-performance CSV files.")
-    parser.add_argument('--dataset_names', nargs='*', default=None)
-    parser.add_argument('--features', nargs='+',
-                        default=['new_gen', 'new_typ', 'new_geo', 'script'])
-    parser.add_argument('--performance_col', default='accuracy')
-    parser.add_argument('--target_col', default='task_lang')
-    parser.add_argument('--source_col', default='transfer_lang')
-    parser.add_argument('--dataset_col', default='dataset')
-    parser.add_argument('--normalizer', default='minmax',
-                        choices=['none', 'minmax'])
-    parser.add_argument('--k', type=int, default=3)
-    parser.add_argument('--top_k_relevance', type=int, default=10)
-    parser.add_argument('--val_size', type=float, default=0.0)
-    parser.add_argument('--random_state', type=int, default=42)
+    parser.add_argument("--csv", nargs="+", required=True)
+    parser.add_argument("--dataset_names", nargs="*", default=None)
+    parser.add_argument("--features", nargs="+",
+                        default=["new_gen", "new_typ", "new_geo", "script"])
+    parser.add_argument("--performance_col", default="accuracy")
+    parser.add_argument("--target_col", default="task_lang")
+    parser.add_argument("--source_col", default="transfer_lang")
+    parser.add_argument("--dataset_col", default="dataset")
+    parser.add_argument("--normalizer", default="minmax",
+                        choices=["none", "minmax"])
+    parser.add_argument("--k", type=int, default=3)
+    parser.add_argument("--top_k_relevance", type=int, default=10)
+    parser.add_argument("--val_size", type=float, default=0.0)
+    parser.add_argument("--random_state", type=int, default=42)
 
-    parser.add_argument('--skip_random', action='store_true')
-    parser.add_argument('--skip_single', action='store_true')
-    parser.add_argument('--skip_learned', action='store_true',
-                        help="Skip LightGBMRanker and MLPRanker baselines.")
+    parser.add_argument("--skip_random", action="store_true")
+    parser.add_argument("--skip_single", action="store_true")
+    parser.add_argument("--skip_learned", action="store_true")
 
-    parser.add_argument('--include_nested_offline', action='store_true',
-                        help="Nested evaluation of fitted composite/RRF.")
-    parser.add_argument('--n_calibration_samples', type=int, default=5000,
-                        help="Number of random simplex samples for nested calibration.")
-    parser.add_argument('--rrf_k_grid', nargs='+', type=float,
+    parser.add_argument("--include_nested_offline", action="store_true")
+    parser.add_argument("--n_opt_steps", type=int, default=1000)
+    parser.add_argument("--learning_rate", type=float, default=0.05)
+    parser.add_argument("--max_pairs_per_query", type=int, default=5000)
+    parser.add_argument("--score_scale", type=float, default=10.0)
+    parser.add_argument("--rrf_k_grid", nargs="+", type=float,
                         default=[1, 5, 10, 20, 40, 60, 100])
 
-    parser.add_argument('--composite_calibration_json', default=None)
-    parser.add_argument('--rrf_calibration_json', default=None)
+    parser.add_argument("--composite_calibration_json", default=None)
+    parser.add_argument("--rrf_calibration_json", default=None)
 
-    parser.add_argument('--include_conformal', action='store_true',
-                        help="Add split-conformal source sets to evaluation outputs.")
-    parser.add_argument('--conformal_alpha', type=float, default=0.1,
-                        help="Miscoverage level for conformal source sets.")
-    parser.add_argument('--conformal_cal_size', type=float, default=0.2,
-                        help="Fraction of non-held-out queries used for conformal calibration.")
+    parser.add_argument("--include_conformal", action="store_true")
+    parser.add_argument("--conformal_alpha", type=float, default=0.1)
+    parser.add_argument("--conformal_cal_size", type=float, default=0.2)
 
-    parser.add_argument('--outdir', default='artifacts/evaluation')
-    parser.add_argument('--verbose', action='store_true')
+    parser.add_argument("--outdir", default="artifacts/evaluation")
+    parser.add_argument("--verbose", action="store_true")
     return parser.parse_args()
 
 
 def build_methods(args: argparse.Namespace):
-    """
-    Build all rankers to compare.
-    """
     methods = []
 
     if not args.skip_random:
         methods.append((
-            'random',
+            "random",
             RandomRanker(random_state=args.random_state),
             None,
         ))
@@ -87,19 +80,19 @@ def build_methods(args: argparse.Namespace):
     if not args.skip_single:
         for idx, feature in enumerate(args.features):
             methods.append((
-                f'single_{feature}',
+                f"single_{feature}",
                 SingleFeatureRanker(feature_idx=idx, ascending=True),
                 None,
             ))
 
     methods.append((
-        'composite_equal',
+        "composite_equal",
         CompositeDistanceRanker(weights=None),
         None,
     ))
 
     methods.append((
-        'rrf_equal',
+        "rrf_equal",
         RRFRanker(weights=None, rrf_k=60.0, ascending=True),
         None,
     ))
@@ -107,7 +100,7 @@ def build_methods(args: argparse.Namespace):
     if args.composite_calibration_json is not None:
         calibration = load_calibration(args.composite_calibration_json)
         methods.append((
-            'composite_offline_frozen',
+            "composite_pairwise_frozen",
             ranker_from_calibration(calibration),
             None,
         ))
@@ -115,7 +108,7 @@ def build_methods(args: argparse.Namespace):
     if args.rrf_calibration_json is not None:
         calibration = load_calibration(args.rrf_calibration_json)
         methods.append((
-            'rrf_offline_frozen',
+            "rrf_pairwise_frozen",
             ranker_from_calibration(calibration),
             None,
         ))
@@ -129,11 +122,14 @@ def build_methods(args: argparse.Namespace):
                 target_col=args.target_col,
                 source_col=args.source_col,
                 dataset_col=args.dataset_col,
-                n_samples=args.n_calibration_samples,
+                n_steps=args.n_opt_steps,
+                learning_rate=args.learning_rate,
+                max_pairs_per_query=args.max_pairs_per_query,
+                score_scale=args.score_scale,
                 random_state=args.random_state,
-                normalizer='none',
+                normalizer="none",
                 verbose=args.verbose,
-                desc='Nested composite calibration',
+                desc="Nested composite pairwise fitting",
             )
             return ranker_from_calibration(calibration)
 
@@ -146,35 +142,38 @@ def build_methods(args: argparse.Namespace):
                 source_col=args.source_col,
                 dataset_col=args.dataset_col,
                 rrf_k_grid=args.rrf_k_grid,
-                n_samples=args.n_calibration_samples,
+                n_steps=args.n_opt_steps,
+                learning_rate=args.learning_rate,
+                max_pairs_per_query=args.max_pairs_per_query,
+                score_scale=args.score_scale,
                 random_state=args.random_state,
-                normalizer='none',
+                normalizer="none",
                 verbose=args.verbose,
-                desc='Nested RRF calibration',
+                desc="Nested RRF pairwise fitting",
             )
             return ranker_from_calibration(calibration)
 
         methods.append((
-            'composite_offline_nested',
+            "composite_pairwise_nested",
             CompositeDistanceRanker(weights=None),
             composite_factory,
         ))
 
         methods.append((
-            'rrf_offline_nested',
+            "rrf_pairwise_nested",
             RRFRanker(weights=None, rrf_k=60.0, ascending=True),
             rrf_factory,
         ))
 
     if not args.skip_learned:
         methods.append((
-            'lightgbm_lambdarank',
+            "lightgbm_lambdarank",
             LightGBMRanker(eval_at=args.k, random_state=args.random_state),
             None,
         ))
 
         methods.append((
-            'mlp_listnet',
+            "mlp_listnet",
             MLPRanker(random_state=args.random_state),
             None,
         ))
@@ -221,7 +220,7 @@ def main() -> None:
     methods = build_methods(args)
     results = []
 
-    method_iterator = tqdm(methods, desc='Methods', disable=not args.verbose)
+    method_iterator = tqdm(methods, desc="Methods", disable=not args.verbose)
 
     for method_name, ranker, factory in method_iterator:
         method_iterator.set_postfix(method=method_name)
@@ -245,9 +244,9 @@ def main() -> None:
     per_fold = results_to_per_fold(results)
     pairwise = pairwise_comparisons(results)
 
-    summary_path = outdir / f'summary_{args.performance_col}.csv'
-    per_fold_path = outdir / f'per_fold_{args.performance_col}.csv'
-    pairwise_path = outdir / f'pairwise_{args.performance_col}.csv'
+    summary_path = outdir / f"summary_{args.performance_col}.csv"
+    per_fold_path = outdir / f"per_fold_{args.performance_col}.csv"
+    pairwise_path = outdir / f"pairwise_{args.performance_col}.csv"
 
     summary.to_csv(summary_path, index=False)
     per_fold.to_csv(per_fold_path, index=False)
@@ -260,5 +259,5 @@ def main() -> None:
     print(f"Wrote {pairwise_path}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

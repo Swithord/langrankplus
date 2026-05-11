@@ -27,8 +27,10 @@ SOURCE_COL="${SOURCE_COL:-transfer_lang}"
 DATASET_COL="${DATASET_COL:-dataset}"
 
 METHODS="${METHODS:-composite rrf}"
-# meaning number of candidate weights
-N_SAMPLES="${N_SAMPLES:-5000}"
+N_OPT_STEPS="${N_OPT_STEPS:-5000}"
+LEARNING_RATE="${LEARNING_RATE:-0.05}"
+MAX_PAIRS_PER_QUERY="${MAX_PAIRS_PER_QUERY:-5000}"
+SCORE_SCALE="${SCORE_SCALE:-10.0}"
 RRF_K_GRID="${RRF_K_GRID:-1 5 10 20 40 60 100}"
 RANDOM_STATE="${RANDOM_STATE:-42}"
 
@@ -78,11 +80,15 @@ echo "HOST: $(hostname)"
 echo "which python: $(which python)"
 python --version
 
-echo "Training offline calibration"
 echo "CSVS: $CSVS"
 echo "FEATURES: $FEATURES"
 echo "PERFORMANCE_COL: $PERFORMANCE_COL"
 echo "METHODS: $METHODS"
+echo "N_OPT_STEPS: $N_OPT_STEPS"
+echo "LEARNING_RATE: $LEARNING_RATE"
+echo "MAX_PAIRS_PER_QUERY: $MAX_PAIRS_PER_QUERY"
+echo "SCORE_SCALE: $SCORE_SCALE"
+echo "RRF_K_GRID: $RRF_K_GRID"
 echo "OUT_DIR: $OUT_DIR"
 
 python -c "import numpy; print('numpy ok')"
@@ -108,13 +114,16 @@ python main.py train \
   --source_col "$SOURCE_COL" \
   --dataset_col "$DATASET_COL" \
   --methods "${METHOD_ARRAY[@]}" \
-  --n_samples "$N_SAMPLES" \
+  --n_opt_steps "$N_OPT_STEPS" \
+  --learning_rate "$LEARNING_RATE" \
+  --max_pairs_per_query "$MAX_PAIRS_PER_QUERY" \
+  --score_scale "$SCORE_SCALE" \
   --rrf_k_grid "${RRF_K_ARRAY[@]}" \
   --random_state "$RANDOM_STATE" \
   --outdir "$OUT_DIR" \
   "${EXTRA_FLAGS[@]}"
 
-echo "Finished offline training for performance_col=$PERFORMANCE_COL"
+echo "Finished offline fitting for performance_col=$PERFORMANCE_COL"
 echo "Expected outputs:"
 echo "  $OUT_DIR/composite_${PERFORMANCE_COL}.json"
 echo "  $OUT_DIR/rrf_${PERFORMANCE_COL}.json"
