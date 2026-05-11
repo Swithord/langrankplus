@@ -27,6 +27,9 @@ SOURCE_COL="${SOURCE_COL:-transfer_lang}"
 DATASET_COL="${DATASET_COL:-dataset}"
 
 METHODS="${METHODS:-composite rrf}"
+NORMALIZER="${NORMALIZER:-minmax}"
+TOP_K_RELEVANCE="${TOP_K_RELEVANCE:-10}"
+
 N_OPT_STEPS="${N_OPT_STEPS:-5000}"
 LEARNING_RATE="${LEARNING_RATE:-0.05}"
 MAX_PAIRS_PER_QUERY="${MAX_PAIRS_PER_QUERY:-5000}"
@@ -84,6 +87,8 @@ echo "CSVS: $CSVS"
 echo "FEATURES: $FEATURES"
 echo "PERFORMANCE_COL: $PERFORMANCE_COL"
 echo "METHODS: $METHODS"
+echo "NORMALIZER: $NORMALIZER"
+echo "TOP_K_RELEVANCE: $TOP_K_RELEVANCE"
 echo "N_OPT_STEPS: $N_OPT_STEPS"
 echo "LEARNING_RATE: $LEARNING_RATE"
 echo "MAX_PAIRS_PER_QUERY: $MAX_PAIRS_PER_QUERY"
@@ -114,6 +119,8 @@ python main.py train \
   --source_col "$SOURCE_COL" \
   --dataset_col "$DATASET_COL" \
   --methods "${METHOD_ARRAY[@]}" \
+  --normalizer "$NORMALIZER" \
+  --top_k_relevance "$TOP_K_RELEVANCE" \
   --n_opt_steps "$N_OPT_STEPS" \
   --learning_rate "$LEARNING_RATE" \
   --max_pairs_per_query "$MAX_PAIRS_PER_QUERY" \

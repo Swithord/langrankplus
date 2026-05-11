@@ -1,6 +1,7 @@
 import argparse
+import json
 from pathlib import Path
-import pandas as pd
+
 from tqdm import tqdm
 
 from src.data import load_transfer_data, normalize_query_features
@@ -10,18 +11,28 @@ from src.evaluation import (
     results_to_per_fold,
     pairwise_comparisons,
 )
-from src.offline.calibration import (
-    fit_composite_weights,
-    fit_rrf_weights,
-    load_calibration,
-    ranker_from_calibration,
-)
 from src.rankers.composite import CompositeDistanceRanker
 from src.rankers.lightgbm import LightGBMRanker
 from src.rankers.mlp import MLPRanker
 from src.rankers.random import RandomRanker
 from src.rankers.rrf import RRFRanker
 from src.rankers.single import SingleFeatureRanker
+
+
+def load_fitted_ranker(path: str | Path):
+    path = Path(path)
+    with path.open("r", encoding="utf-8") as f:
+        payload = json.load(f)
+
+    method = payload.get("method", "")
+
+    if method.startswith("composite"):
+        return CompositeDistanceRanker.load(path)
+
+    if method.startswith("rrf"):
+        return RRFRanker.load(path)
+
+    raise ValueError(f"Unknown fitted ranker method in {path}: {method}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -74,7 +85,6 @@ def build_methods(args: argparse.Namespace):
         methods.append((
             "random",
             RandomRanker(random_state=args.random_state),
-            None,
         ))
 
     if not args.skip_single:
@@ -82,100 +92,70 @@ def build_methods(args: argparse.Namespace):
             methods.append((
                 f"single_{feature}",
                 SingleFeatureRanker(feature_idx=idx, ascending=True),
-                None,
             ))
 
     methods.append((
         "composite_equal",
-        CompositeDistanceRanker(weights=None),
-        None,
+        CompositeDistanceRanker(weights=None, trainable=False),
     ))
 
     methods.append((
         "rrf_equal",
-        RRFRanker(weights=None, rrf_k=60.0, ascending=True),
-        None,
+        RRFRanker(weights=None, rrf_k=60.0, ascending=True, trainable=False),
     ))
 
     if args.composite_calibration_json is not None:
-        calibration = load_calibration(args.composite_calibration_json)
         methods.append((
             "composite_pairwise_frozen",
-            ranker_from_calibration(calibration),
-            None,
+            load_fitted_ranker(args.composite_calibration_json),
         ))
 
     if args.rrf_calibration_json is not None:
-        calibration = load_calibration(args.rrf_calibration_json)
         methods.append((
             "rrf_pairwise_frozen",
-            ranker_from_calibration(calibration),
-            None,
+            load_fitted_ranker(args.rrf_calibration_json),
         ))
 
     if args.include_nested_offline:
-        def composite_factory(train_df: pd.DataFrame, feature_cols: list[str]):
-            calibration = fit_composite_weights(
-                train_df,
-                feature_cols=feature_cols,
-                performance_col=args.performance_col,
-                target_col=args.target_col,
-                source_col=args.source_col,
-                dataset_col=args.dataset_col,
+        methods.append((
+            "composite_pairwise_nested",
+            CompositeDistanceRanker(
+                weights=None,
+                trainable=True,
                 n_steps=args.n_opt_steps,
                 learning_rate=args.learning_rate,
                 max_pairs_per_query=args.max_pairs_per_query,
                 score_scale=args.score_scale,
                 random_state=args.random_state,
-                normalizer="none",
                 verbose=args.verbose,
-                desc="Nested composite pairwise fitting",
-            )
-            return ranker_from_calibration(calibration)
+            ),
+        ))
 
-        def rrf_factory(train_df: pd.DataFrame, feature_cols: list[str]):
-            calibration = fit_rrf_weights(
-                train_df,
-                feature_cols=feature_cols,
-                performance_col=args.performance_col,
-                target_col=args.target_col,
-                source_col=args.source_col,
-                dataset_col=args.dataset_col,
+        methods.append((
+            "rrf_pairwise_nested",
+            RRFRanker(
+                weights=None,
+                ascending=True,
+                trainable=True,
                 rrf_k_grid=args.rrf_k_grid,
                 n_steps=args.n_opt_steps,
                 learning_rate=args.learning_rate,
                 max_pairs_per_query=args.max_pairs_per_query,
                 score_scale=args.score_scale,
                 random_state=args.random_state,
-                normalizer="none",
                 verbose=args.verbose,
-                desc="Nested RRF pairwise fitting",
-            )
-            return ranker_from_calibration(calibration)
-
-        methods.append((
-            "composite_pairwise_nested",
-            CompositeDistanceRanker(weights=None),
-            composite_factory,
-        ))
-
-        methods.append((
-            "rrf_pairwise_nested",
-            RRFRanker(weights=None, rrf_k=60.0, ascending=True),
-            rrf_factory,
+            ),
         ))
 
     if not args.skip_learned:
         methods.append((
             "lightgbm_lambdarank",
             LightGBMRanker(eval_at=args.k, random_state=args.random_state),
-            None,
         ))
 
         methods.append((
             "mlp_listnet",
             MLPRanker(random_state=args.random_state),
-            None,
         ))
 
     return methods
@@ -222,7 +202,7 @@ def main() -> None:
 
     method_iterator = tqdm(methods, desc="Methods", disable=not args.verbose)
 
-    for method_name, ranker, factory in method_iterator:
+    for method_name, ranker in method_iterator:
         method_iterator.set_postfix(method=method_name)
         print(f"\nEvaluating {method_name}")
 
@@ -231,7 +211,7 @@ def main() -> None:
             df=df,
             feature_cols=args.features,
             method_name=method_name,
-            fold_ranker_factory=factory,
+            fold_ranker_factory=None,
         )
 
         print(result)

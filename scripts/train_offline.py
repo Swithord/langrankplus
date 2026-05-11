@@ -1,17 +1,21 @@
 import argparse
 from pathlib import Path
 
-from src.data import load_transfer_data
-from src.offline.calibration import (
-    fit_composite_weights,
-    fit_rrf_weights,
-    save_calibration,
+import numpy as np
+
+from src.data import (
+    add_query_id,
+    get_query_cols,
+    load_transfer_data,
+    normalize_query_features,
 )
+from src.rankers.composite import CompositeDistanceRanker
+from src.rankers.rrf import RRFRanker
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Fit frozen composite/RRF source-selection weights.",
+        description="Fit frozen composite/RRF source-selection rankers.",
     )
     parser.add_argument("--csv", nargs="+", required=True)
     parser.add_argument("--dataset_names", nargs="*", default=None)
@@ -24,6 +28,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--methods", nargs="+",
                         default=["composite", "rrf"],
                         choices=["composite", "rrf"])
+    parser.add_argument("--normalizer", default="minmax",
+                        choices=["none", "minmax"])
+    parser.add_argument("--top_k_relevance", type=int, default=10)
     parser.add_argument("--n_opt_steps", type=int, default=5000)
     parser.add_argument("--learning_rate", type=float, default=0.05)
     parser.add_argument("--max_pairs_per_query", type=int, default=5000)
@@ -36,6 +43,40 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def add_relevance_labels(df,
+                         *,
+                         target_col: str,
+                         dataset_col: str,
+                         performance_col: str,
+                         top_k_relevance: int):
+    out = df.copy()
+    query_cols = get_query_cols(
+        out,
+        target_col=target_col,
+        dataset_col=dataset_col,
+    )
+
+    ranks = out.groupby(query_cols)[performance_col].rank(
+        method="min",
+        ascending=False,
+    )
+
+    out["_relevance"] = np.where(
+        ranks <= top_k_relevance,
+        top_k_relevance + 1 - ranks,
+        0.0,
+    )
+
+    out = add_query_id(
+        out,
+        target_col=target_col,
+        dataset_col=dataset_col,
+        query_id_col="_query_id",
+    )
+
+    return out
+
+
 def main() -> None:
     args = parse_args()
 
@@ -43,56 +84,64 @@ def main() -> None:
     if dataset_names == []:
         dataset_names = None
 
-    df = load_transfer_data(
+    raw_df = load_transfer_data(
         args.csv,
         dataset_names=dataset_names,
         dataset_col=args.dataset_col,
     )
 
+    df = normalize_query_features(
+        raw_df,
+        feature_cols=args.features,
+        target_col=args.target_col,
+        dataset_col=args.dataset_col,
+        method=args.normalizer,
+    )
+
+    df = add_relevance_labels(
+        df,
+        target_col=args.target_col,
+        dataset_col=args.dataset_col,
+        performance_col=args.performance_col,
+        top_k_relevance=args.top_k_relevance,
+    )
+
+    X = df[args.features].to_numpy(dtype=float)
+    y = df["_relevance"].to_numpy(dtype=float)
+    groups = df["_query_id"].to_numpy()
+
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
 
     if "composite" in args.methods:
-        result = fit_composite_weights(
-            df,
-            feature_cols=args.features,
-            performance_col=args.performance_col,
-            target_col=args.target_col,
-            source_col=args.source_col,
-            dataset_col=args.dataset_col,
+        ranker = CompositeDistanceRanker(
+            trainable=True,
             n_steps=args.n_opt_steps,
             learning_rate=args.learning_rate,
             max_pairs_per_query=args.max_pairs_per_query,
             score_scale=args.score_scale,
             random_state=args.random_state,
-            normalizer="minmax",
             verbose=args.verbose,
-            desc="Composite pairwise fitting",
         )
+        ranker.fit(X, y, groups=groups)
         path = outdir / f"composite_{args.performance_col}.json"
-        save_calibration(result, path)
+        ranker.save(path)
         print(f"Wrote {path}")
 
     if "rrf" in args.methods:
-        result = fit_rrf_weights(
-            df,
-            feature_cols=args.features,
-            performance_col=args.performance_col,
-            target_col=args.target_col,
-            source_col=args.source_col,
-            dataset_col=args.dataset_col,
+        ranker = RRFRanker(
+            trainable=True,
             rrf_k_grid=args.rrf_k_grid,
             n_steps=args.n_opt_steps,
             learning_rate=args.learning_rate,
             max_pairs_per_query=args.max_pairs_per_query,
             score_scale=args.score_scale,
             random_state=args.random_state,
-            normalizer="none",
             verbose=args.verbose,
-            desc="RRF pairwise fitting",
         )
+        ranker.fit(X, y, groups=groups)
         path = outdir / f"rrf_{args.performance_col}.json"
-        save_calibration(result, path)
+        ranker.save(path)
         print(f"Wrote {path}")
 
 
