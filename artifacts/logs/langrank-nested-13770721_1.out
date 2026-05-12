@@ -1,0 +1,76 @@
+PWD: /project/6102153/khanadi7/langrankplus
+HOST: c257.nibi.sharcnet
+which python: /project/6102153/khanadi7/langrankplus/venv/bin/python
+Python 3.11.4
+CSVS: data/sib200.csv
+FEATURES: new_gen new_typ new_geo script
+PERFORMANCE_COL: f1_score
+OUT_DIR: artifacts/evaluation_sib200_nested/f1_score
+VAL_SIZE: 0
+N_OPT_STEPS: 1000
+LEARNING_RATE: 0.05
+MAX_PAIRS_PER_QUERY: 5000
+SCORE_SCALE: 10.0
+RRF_K_GRID: 1 5 10 20 40 60 100
+INCLUDE_CONFORMAL: 1
+numpy ok
+pandas ok
+sklearn ok
+lightgbm ok
+torch ok
+
+Evaluating random
+EvaluationResult(method=random, ndcg@3=4.39, perf_loss=80.23, top1=0.00, top3=1.58, conf_cov=90.53, conf_size=152.23)
+
+Evaluating single_new_gen
+EvaluationResult(method=single_new_gen, ndcg@3=19.16, perf_loss=22.36, top1=13.68, top3=17.37, conf_cov=89.47, conf_size=159.15)
+
+Evaluating single_new_typ
+EvaluationResult(method=single_new_typ, ndcg@3=17.37, perf_loss=22.99, top1=11.58, top3=13.68, conf_cov=90.53, conf_size=160.84)
+
+Evaluating single_new_geo
+EvaluationResult(method=single_new_geo, ndcg@3=18.07, perf_loss=24.01, top1=13.68, top3=16.84, conf_cov=93.68, conf_size=170.58)
+
+Evaluating single_script
+EvaluationResult(method=single_script, ndcg@3=8.00, perf_loss=23.56, top1=2.11, top3=10.00, conf_cov=96.32, conf_size=172.95)
+
+Evaluating composite_equal
+EvaluationResult(method=composite_equal, ndcg@3=19.85, perf_loss=22.91, top1=13.68, top3=18.42, conf_cov=91.58, conf_size=168.44)
+
+Evaluating rrf_equal
+EvaluationResult(method=rrf_equal, ndcg@3=19.70, perf_loss=22.84, top1=13.68, top3=17.37, conf_cov=90.00, conf_size=162.78)
+
+Evaluating composite_pairwise_nested
+EvaluationResult(method=composite_pairwise_nested, ndcg@3=20.23, perf_loss=22.78, top1=13.68, top3=17.89, conf_cov=91.58, conf_size=167.19)
+
+Evaluating rrf_pairwise_nested
+EvaluationResult(method=rrf_pairwise_nested, ndcg@3=19.43, perf_loss=23.10, top1=13.68, top3=16.32, conf_cov=92.11, conf_size=161.88)
+
+Evaluating lightgbm_lambdarank
+EvaluationResult(method=lightgbm_lambdarank, ndcg@3=25.96, perf_loss=18.27, top1=16.84, top3=28.95, conf_cov=94.74, conf_size=145.81)
+
+Evaluating mlp_listnet
+EvaluationResult(method=mlp_listnet, ndcg@3=19.37, perf_loss=23.34, top1=13.68, top3=17.37, conf_cov=93.16, conf_size=163.45)
+
+Summary
+                   method    ndcg@3  performance_loss  top_1_accuracy  top_3_accuracy  n_folds  conformal_alpha  conformal_best_source_coverage  conformal_average_set_size  conformal_singleton_rate  conformal_empty_rate  conformal_best_in_set_performance_loss
+      lightgbm_lambdarank 25.964997         18.274232       16.842105       28.947368      190              0.1                       94.736842                  145.805263                       0.0                   0.0                                0.142662
+           single_new_gen 19.160498         22.355302       13.684211       17.368421      190              0.1                       89.473684                  159.147368                       0.0                   0.0                                0.256222
+composite_pairwise_nested 20.229345         22.782200       13.684211       17.894737      190              0.1                       91.578947                  167.189474                       0.0                   0.0                                0.112010
+                rrf_equal 19.702852         22.841108       13.684211       17.368421      190              0.1                       90.000000                  162.784211                       0.0                   0.0                                0.334734
+          composite_equal 19.849802         22.909848       13.684211       18.421053      190              0.1                       91.578947                  168.436842                       0.0                   0.0                                0.114731
+           single_new_typ 17.365156         22.986292       11.578947       13.684211      190              0.1                       90.526316                  160.836842                       0.0                   0.0                                0.203805
+      rrf_pairwise_nested 19.426968         23.102814       13.684211       16.315789      190              0.1                       92.105263                  161.884211                       0.0                   0.0                                0.478174
+              mlp_listnet 19.368401         23.337399       13.684211       17.368421      190              0.1                       93.157895                  163.447368                       0.0                   0.0                                0.104550
+            single_script  7.999050         23.557563        2.105263       10.000000      190              0.1                       96.315789                  172.947368                       0.0                   0.0                                0.103897
+           single_new_geo 18.065325         24.012941       13.684211       16.842105      190              0.1                       93.684211                  170.578947                       0.0                   0.0                                0.200790
+                   random  4.385567         80.231599        0.000000        1.578947      190              0.1                       90.526316                  152.231579                       0.0                   0.0                                0.142392
+
+Wrote artifacts/evaluation_sib200_nested/f1_score/summary_f1_score.csv
+Wrote artifacts/evaluation_sib200_nested/f1_score/per_fold_f1_score.csv
+Wrote artifacts/evaluation_sib200_nested/f1_score/pairwise_f1_score.csv
+Finished nested evaluation for performance_col=f1_score
+Outputs:
+  artifacts/evaluation_sib200_nested/f1_score/summary_f1_score.csv
+  artifacts/evaluation_sib200_nested/f1_score/per_fold_f1_score.csv
+  artifacts/evaluation_sib200_nested/f1_score/pairwise_f1_score.csv
