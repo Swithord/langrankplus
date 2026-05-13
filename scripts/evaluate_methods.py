@@ -2,13 +2,16 @@ import argparse
 import json
 from pathlib import Path
 
+import pandas as pd
 from tqdm import tqdm
 
 from src.data import load_transfer_data, normalize_query_features
 from src.evaluation import (
     TransferEvaluator,
     pairwise_comparisons,
+    results_to_fold_metadata,
     results_to_per_fold,
+    results_to_rankings,
     results_to_summary,
 )
 from src.rankers.composite import CompositeDistanceRanker
@@ -34,6 +37,33 @@ def load_fitted_ranker(path: str | Path):
         return RRFRanker.load(path)
 
     raise ValueError(f"Unknown fitted ranker method in {path}: {method}")
+
+
+def write_dataframe(df: pd.DataFrame, path: Path, file_format: str) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    if file_format == "csv":
+        out = path.with_suffix(".csv")
+        df.to_csv(out, index=False)
+        return out
+
+    if file_format == "parquet":
+        out = path.with_suffix(".parquet")
+        try:
+            df.to_parquet(out, index=False)
+            return out
+        except ImportError as exc:
+            fallback = path.with_suffix(".csv")
+            df.to_csv(fallback, index=False)
+            print(
+                "Parquet support is unavailable. "
+                "Install pyarrow or fastparquet. "
+                f"Wrote CSV fallback instead: {fallback}"
+            )
+            print(f"Original parquet error: {exc}")
+            return fallback
+
+    raise ValueError(f"Unknown file format: {file_format}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -79,22 +109,31 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--near_best_rule", default="relative",
                         choices=["relative", "std"])
     parser.add_argument("--conformal_near_best_rules", nargs="+",
-                        choices=["relative", "std"],
-                        default=["relative", "std"])
+                        default=["relative", "std"],
+                        choices=["relative", "std"])
     parser.add_argument("--near_best_epsilon", type=float, default=0.05)
     parser.add_argument("--near_best_std_multiplier", type=float, default=1.0)
     parser.add_argument("--conformal_max_set_size", type=int, default=None)
     parser.add_argument("--conformal_max_set_sizes", nargs="*", type=int,
                         default=[3, 5, 10])
 
-    parser.add_argument("--operational_relative_epsilons", nargs="+", type=float,
-                        default=[0.05])
     parser.add_argument("--operational_std_multipliers", nargs="+", type=float,
                         default=[0.0, 0.25, 0.5, 1.0])
     parser.add_argument("--operational_top_k", nargs="+", type=int,
                         default=[3, 5, 10])
     parser.add_argument("--ir_cutoffs", nargs="+", type=int,
                         default=[1, 3, 5, 10])
+
+    parser.add_argument("--save_rankings", dest="save_rankings",
+                        action="store_true", default=True)
+    parser.add_argument("--no_save_rankings", dest="save_rankings",
+                        action="store_false")
+    parser.add_argument("--save_calibration_rankings", dest="save_calibration_rankings",
+                        action="store_true", default=True)
+    parser.add_argument("--no_save_calibration_rankings", dest="save_calibration_rankings",
+                        action="store_false")
+    parser.add_argument("--rankings_format", default="parquet",
+                        choices=["parquet", "csv"])
 
     parser.add_argument("--outdir", default="artifacts/evaluation")
     parser.add_argument("--verbose", action="store_true")
@@ -226,10 +265,11 @@ def main() -> None:
         near_best_std_multiplier=args.near_best_std_multiplier,
         conformal_max_set_size=args.conformal_max_set_size,
         conformal_max_set_sizes=args.conformal_max_set_sizes,
-        operational_relative_epsilons=args.operational_relative_epsilons,
         operational_std_multipliers=args.operational_std_multipliers,
         operational_top_k=args.operational_top_k,
         ir_cutoffs=args.ir_cutoffs,
+        collect_rankings=args.save_rankings,
+        save_calibration_rankings=args.save_calibration_rankings,
     )
 
     methods = build_methods(args)
@@ -272,6 +312,24 @@ def main() -> None:
     print(f"\nWrote {summary_path}")
     print(f"Wrote {per_fold_path}")
     print(f"Wrote {pairwise_path}")
+
+    if args.save_rankings:
+        rankings = results_to_rankings(results)
+        fold_metadata = results_to_fold_metadata(results)
+
+        rankings_path = write_dataframe(
+            rankings,
+            outdir / f"rankings_{args.performance_col}",
+            args.rankings_format,
+        )
+        fold_metadata_path = write_dataframe(
+            fold_metadata,
+            outdir / f"fold_metadata_{args.performance_col}",
+            args.rankings_format,
+        )
+
+        print(f"Wrote {rankings_path}")
+        print(f"Wrote {fold_metadata_path}")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=langrank-train
 #SBATCH --account=def-annielee
-#SBATCH --time=08:00:00
+#SBATCH --time=04:00:00
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
@@ -26,24 +26,22 @@ TARGET_COL="${TARGET_COL:-task_lang}"
 SOURCE_COL="${SOURCE_COL:-transfer_lang}"
 DATASET_COL="${DATASET_COL:-dataset}"
 
-METHODS="${METHODS:-composite rrf}"
 NORMALIZER="${NORMALIZER:-minmax}"
-TOP_K_RELEVANCE="${TOP_K_RELEVANCE:-10}"
+RANDOM_STATE="${RANDOM_STATE:-42}"
 
-N_OPT_STEPS="${N_OPT_STEPS:-5000}"
+OUT_DIR="${OUT_DIR:-artifacts/offline_calibration}"
+
+N_OPT_STEPS="${N_OPT_STEPS:-1000}"
 LEARNING_RATE="${LEARNING_RATE:-0.05}"
 MAX_PAIRS_PER_QUERY="${MAX_PAIRS_PER_QUERY:-5000}"
 SCORE_SCALE="${SCORE_SCALE:-10.0}"
 RRF_K_GRID="${RRF_K_GRID:-1 5 10 20 40 60 100}"
-RANDOM_STATE="${RANDOM_STATE:-42}"
 
-OUT_DIR="${OUT_DIR:-artifacts/offline_calibration}"
 VERBOSE="${VERBOSE:-1}"
 
 read -r -a PERF_ARRAY <<< "$PERFORMANCE_COLS"
 read -r -a CSV_ARRAY <<< "$CSVS"
 read -r -a FEATURE_ARRAY <<< "$FEATURES"
-read -r -a METHOD_ARRAY <<< "$METHODS"
 read -r -a RRF_K_ARRAY <<< "$RRF_K_GRID"
 
 if [[ "$SLURM_ARRAY_TASK_ID" -ge "${#PERF_ARRAY[@]}" ]]; then
@@ -57,6 +55,9 @@ PERFORMANCE_COL="${PERF_ARRAY[$SLURM_ARRAY_TASK_ID]}"
 export PYTHONPATH="$SLURM_SUBMIT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 
 mkdir -p artifacts/logs "$OUT_DIR"
+
+module load StdEnv/2023
+module load arrow/24.0.0
 
 if [[ -n "$PYTHON_MODULE" ]]; then
   module load "$PYTHON_MODULE"
@@ -83,24 +84,30 @@ echo "HOST: $(hostname)"
 echo "which python: $(which python)"
 python --version
 
+echo "Training offline fitted composite/RRF"
 echo "CSVS: $CSVS"
 echo "FEATURES: $FEATURES"
 echo "PERFORMANCE_COL: $PERFORMANCE_COL"
-echo "METHODS: $METHODS"
-echo "NORMALIZER: $NORMALIZER"
-echo "TOP_K_RELEVANCE: $TOP_K_RELEVANCE"
+echo "OUT_DIR: $OUT_DIR"
 echo "N_OPT_STEPS: $N_OPT_STEPS"
 echo "LEARNING_RATE: $LEARNING_RATE"
 echo "MAX_PAIRS_PER_QUERY: $MAX_PAIRS_PER_QUERY"
 echo "SCORE_SCALE: $SCORE_SCALE"
 echo "RRF_K_GRID: $RRF_K_GRID"
-echo "OUT_DIR: $OUT_DIR"
 
 python -c "import numpy; print('numpy ok')"
 python -c "import pandas; print('pandas ok')"
 python -c "import sklearn; print('sklearn ok')"
+python -c "import pyarrow; print('pyarrow ok')"
+python -c "import torch; print('torch ok')"
 
-EXTRA_FLAGS=()
+EXTRA_FLAGS=(
+  --n_opt_steps "$N_OPT_STEPS"
+  --learning_rate "$LEARNING_RATE"
+  --max_pairs_per_query "$MAX_PAIRS_PER_QUERY"
+  --score_scale "$SCORE_SCALE"
+  --rrf_k_grid "${RRF_K_ARRAY[@]}"
+)
 
 if [[ -n "$DATASET_NAMES" ]]; then
   read -r -a DATASET_NAME_ARRAY <<< "$DATASET_NAMES"
@@ -118,19 +125,12 @@ python main.py train \
   --target_col "$TARGET_COL" \
   --source_col "$SOURCE_COL" \
   --dataset_col "$DATASET_COL" \
-  --methods "${METHOD_ARRAY[@]}" \
   --normalizer "$NORMALIZER" \
-  --top_k_relevance "$TOP_K_RELEVANCE" \
-  --n_opt_steps "$N_OPT_STEPS" \
-  --learning_rate "$LEARNING_RATE" \
-  --max_pairs_per_query "$MAX_PAIRS_PER_QUERY" \
-  --score_scale "$SCORE_SCALE" \
-  --rrf_k_grid "${RRF_K_ARRAY[@]}" \
   --random_state "$RANDOM_STATE" \
   --outdir "$OUT_DIR" \
   "${EXTRA_FLAGS[@]}"
 
 echo "Finished offline fitting for performance_col=$PERFORMANCE_COL"
-echo "Expected outputs:"
+echo "Outputs:"
 echo "  $OUT_DIR/composite_${PERFORMANCE_COL}.json"
 echo "  $OUT_DIR/rrf_${PERFORMANCE_COL}.json"
