@@ -7,9 +7,9 @@ from tqdm import tqdm
 from src.data import load_transfer_data, normalize_query_features
 from src.evaluation import (
     TransferEvaluator,
-    results_to_summary,
-    results_to_per_fold,
     pairwise_comparisons,
+    results_to_per_fold,
+    results_to_summary,
 )
 from src.rankers.composite import CompositeDistanceRanker
 from src.rankers.lightgbm import LightGBMRanker
@@ -21,6 +21,7 @@ from src.rankers.single import SingleFeatureRanker
 
 def load_fitted_ranker(path: str | Path):
     path = Path(path)
+
     with path.open("r", encoding="utf-8") as f:
         payload = json.load(f)
 
@@ -39,6 +40,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Compare source-language selection methods.",
     )
+
     parser.add_argument("--csv", nargs="+", required=True)
     parser.add_argument("--dataset_names", nargs="*", default=None)
     parser.add_argument("--features", nargs="+",
@@ -72,9 +74,31 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--include_conformal", action="store_true")
     parser.add_argument("--conformal_alpha", type=float, default=0.1)
     parser.add_argument("--conformal_cal_size", type=float, default=0.2)
+    parser.add_argument("--conformal_mode", default="rank_near_best",
+                        choices=["gap_best", "rank_best", "rank_near_best"])
+    parser.add_argument("--near_best_rule", default="relative",
+                        choices=["relative", "std"])
+    parser.add_argument("--conformal_near_best_rules", nargs="+",
+                        choices=["relative", "std"],
+                        default=["relative", "std"])
+    parser.add_argument("--near_best_epsilon", type=float, default=0.05)
+    parser.add_argument("--near_best_std_multiplier", type=float, default=1.0)
+    parser.add_argument("--conformal_max_set_size", type=int, default=None)
+    parser.add_argument("--conformal_max_set_sizes", nargs="*", type=int,
+                        default=[3, 5, 10])
+
+    parser.add_argument("--operational_relative_epsilons", nargs="+", type=float,
+                        default=[0.05])
+    parser.add_argument("--operational_std_multipliers", nargs="+", type=float,
+                        default=[0.0, 0.25, 0.5, 1.0])
+    parser.add_argument("--operational_top_k", nargs="+", type=int,
+                        default=[3, 5, 10])
+    parser.add_argument("--ir_cutoffs", nargs="+", type=int,
+                        default=[1, 3, 5, 10])
 
     parser.add_argument("--outdir", default="artifacts/evaluation")
     parser.add_argument("--verbose", action="store_true")
+
     return parser.parse_args()
 
 
@@ -195,6 +219,17 @@ def main() -> None:
         include_conformal=args.include_conformal,
         conformal_alpha=args.conformal_alpha,
         conformal_cal_size=args.conformal_cal_size,
+        conformal_mode=args.conformal_mode,
+        near_best_rule=args.near_best_rule,
+        conformal_near_best_rules=args.conformal_near_best_rules,
+        near_best_epsilon=args.near_best_epsilon,
+        near_best_std_multiplier=args.near_best_std_multiplier,
+        conformal_max_set_size=args.conformal_max_set_size,
+        conformal_max_set_sizes=args.conformal_max_set_sizes,
+        operational_relative_epsilons=args.operational_relative_epsilons,
+        operational_std_multipliers=args.operational_std_multipliers,
+        operational_top_k=args.operational_top_k,
+        ir_cutoffs=args.ir_cutoffs,
     )
 
     methods = build_methods(args)
