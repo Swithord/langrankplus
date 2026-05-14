@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=langrank-infer
 #SBATCH --account=def-annielee
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
@@ -26,10 +26,11 @@ DATASET_COL="${DATASET_COL:-dataset}"
 
 NORMALIZER="${NORMALIZER:-minmax}"
 METHOD="${METHOD:-composite_equal}"
-SINGLE_FEATURE="${SINGLE_FEATURE:-}"
 CALIBRATION_JSON="${CALIBRATION_JSON:-}"
 
 OUT_DIR="${OUT_DIR:-artifacts/inference}"
+
+VERBOSE="${VERBOSE:-1}"
 
 read -r -a CSV_ARRAY <<< "$CSVS"
 read -r -a FEATURE_ARRAY <<< "$FEATURES"
@@ -37,6 +38,9 @@ read -r -a FEATURE_ARRAY <<< "$FEATURES"
 export PYTHONPATH="$SLURM_SUBMIT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 
 mkdir -p artifacts/logs "$OUT_DIR"
+
+module load StdEnv/2023
+module load arrow/24.0.0
 
 if [[ -n "$PYTHON_MODULE" ]]; then
   module load "$PYTHON_MODULE"
@@ -53,6 +57,11 @@ else
   exit 1
 fi
 
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
+export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
+export OPENBLAS_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
+export NUMEXPR_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
+
 echo "PWD: $(pwd)"
 echo "HOST: $(hostname)"
 echo "which python: $(which python)"
@@ -62,7 +71,13 @@ echo "Inference"
 echo "CSVS: $CSVS"
 echo "FEATURES: $FEATURES"
 echo "METHOD: $METHOD"
+echo "CALIBRATION_JSON: $CALIBRATION_JSON"
 echo "OUT_DIR: $OUT_DIR"
+
+python -c "import numpy; print('numpy ok')"
+python -c "import pandas; print('pandas ok')"
+python -c "import sklearn; print('sklearn ok')"
+python -c "import pyarrow; print('pyarrow ok')"
 
 EXTRA_FLAGS=()
 
@@ -71,20 +86,12 @@ if [[ -n "$DATASET_NAMES" ]]; then
   EXTRA_FLAGS+=(--dataset_names "${DATASET_NAME_ARRAY[@]}")
 fi
 
-if [[ "$METHOD" == "single" ]]; then
-  if [[ -z "$SINGLE_FEATURE" ]]; then
-    echo "SINGLE_FEATURE is required when METHOD=single"
-    exit 1
-  fi
-  EXTRA_FLAGS+=(--single_feature "$SINGLE_FEATURE")
+if [[ -n "$CALIBRATION_JSON" ]]; then
+  EXTRA_FLAGS+=(--calibration_json "$CALIBRATION_JSON")
 fi
 
-if [[ "$METHOD" == "calibrated" ]]; then
-  if [[ -z "$CALIBRATION_JSON" ]]; then
-    echo "CALIBRATION_JSON is required when METHOD=calibrated"
-    exit 1
-  fi
-  EXTRA_FLAGS+=(--calibration_json "$CALIBRATION_JSON")
+if [[ "$VERBOSE" == "1" ]]; then
+  EXTRA_FLAGS+=(--verbose)
 fi
 
 python main.py infer \
@@ -99,4 +106,4 @@ python main.py infer \
   "${EXTRA_FLAGS[@]}"
 
 echo "Finished inference"
-echo "Outputs are in $OUT_DIR"
+echo "Outputs written to $OUT_DIR"

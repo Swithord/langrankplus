@@ -72,28 +72,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--composite_calibration_json", default=None)
     parser.add_argument("--rrf_calibration_json", default=None)
 
-    parser.add_argument("--include_conformal", action="store_true")
-    parser.add_argument("--conformal_alpha", type=float, default=0.1)
-    parser.add_argument("--conformal_cal_size", type=float, default=0.2)
-    parser.add_argument("--conformal_mode", default="rank_near_best",
-                        choices=["gap_best", "rank_best", "rank_near_best"])
-    parser.add_argument("--near_best_rule", default="relative",
-                        choices=["relative", "std"])
-    parser.add_argument("--conformal_near_best_rules", nargs="+",
-                        choices=["relative", "std"],
-                        default=["relative", "std"])
-    parser.add_argument("--near_best_epsilon", type=float, default=0.05)
-    parser.add_argument("--near_best_std_multiplier", type=float, default=1.0)
-    parser.add_argument("--conformal_max_set_size", type=int, default=None)
-    parser.add_argument("--conformal_max_set_sizes", nargs="*", type=int,
-                        default=[3, 5, 10])
+    parser.add_argument("--include_cnotc", action="store_true")
+    parser.add_argument("--cnotc_alpha", type=float, default=0.1)
+    parser.add_argument("--cnotc_epsilon", type=float, default=0.05)
+    parser.add_argument("--cnotc_cal_size", type=float, default=0.2)
+    parser.add_argument("--budget_ks", nargs="+", type=int, default=[10])
 
-    parser.add_argument("--operational_relative_epsilons", nargs="+", type=float,
-                        default=[0.05])
-    parser.add_argument("--operational_std_multipliers", nargs="+", type=float,
-                        default=[0.0, 0.25, 0.5, 1.0])
-    parser.add_argument("--operational_top_k", nargs="+", type=int,
-                        default=[3, 5, 10])
+    parser.add_argument("--include_ir_metrics", action="store_true")
     parser.add_argument("--ir_cutoffs", nargs="+", type=int,
                         default=[1, 3, 5, 10])
 
@@ -217,19 +202,12 @@ def main() -> None:
         val_size=args.val_size,
         random_state=args.random_state,
         verbose=args.verbose,
-        include_conformal=args.include_conformal,
-        conformal_alpha=args.conformal_alpha,
-        conformal_cal_size=args.conformal_cal_size,
-        conformal_mode=args.conformal_mode,
-        near_best_rule=args.near_best_rule,
-        conformal_near_best_rules=args.conformal_near_best_rules,
-        near_best_epsilon=args.near_best_epsilon,
-        near_best_std_multiplier=args.near_best_std_multiplier,
-        conformal_max_set_size=args.conformal_max_set_size,
-        conformal_max_set_sizes=args.conformal_max_set_sizes,
-        operational_relative_epsilons=args.operational_relative_epsilons,
-        operational_std_multipliers=args.operational_std_multipliers,
-        operational_top_k=args.operational_top_k,
+        include_cnotc=args.include_cnotc,
+        cnotc_alpha=args.cnotc_alpha,
+        cnotc_epsilon=args.cnotc_epsilon,
+        cnotc_cal_size=args.cnotc_cal_size,
+        budget_ks=args.budget_ks,
+        include_ir_metrics=args.include_ir_metrics,
         ir_cutoffs=args.ir_cutoffs,
     )
 
