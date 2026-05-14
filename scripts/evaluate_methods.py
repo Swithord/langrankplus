@@ -10,6 +10,7 @@ from src.evaluation import (
     pairwise_comparisons,
     results_to_per_fold,
     results_to_summary,
+    results_to_transfer_type_loss,
 )
 from src.rankers.composite import CompositeDistanceRanker
 from src.rankers.lightgbm import LightGBMRanker
@@ -258,20 +259,24 @@ def main() -> None:
     summary = results_to_summary(results)
     per_fold = results_to_per_fold(results)
     pairwise = pairwise_comparisons(results)
+    transfer_type_loss = results_to_transfer_type_loss(results)
 
     summary_path = outdir / f"summary_{args.performance_col}.csv"
     per_fold_path = outdir / f"per_fold_{args.performance_col}.csv"
     pairwise_path = outdir / f"pairwise_{args.performance_col}.csv"
+    transfer_type_loss_path = outdir / f"transfer_type_loss_{args.performance_col}.csv"
 
     summary.to_csv(summary_path, index=False)
     per_fold.to_csv(per_fold_path, index=False)
     pairwise.to_csv(pairwise_path, index=False)
+    transfer_type_loss.to_csv(transfer_type_loss_path, index=False)
 
     print("\nSummary")
     print(summary.to_string(index=False))
     print(f"\nWrote {summary_path}")
     print(f"Wrote {per_fold_path}")
     print(f"Wrote {pairwise_path}")
+    print(f"Wrote {transfer_type_loss_path}")
 
 
 if __name__ == "__main__":

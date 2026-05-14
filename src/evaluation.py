@@ -24,6 +24,7 @@ from .metrics import (
     top_k_accuracy,
 )
 from .rankers.base import BaseRanker
+from .resource_level_langs import RESOURCE_LEVELS, resource_level
 from .validation import validate_dataset
 
 
@@ -426,12 +427,19 @@ class TransferEvaluator:
             top_1_hits.append(top_k_accuracy(y_test, y_pred, k=1))
             top_3_hits.append(top_k_accuracy(y_test, y_pred, k=3))
 
+            target_lang_val = test_data[self.target_col].iloc[0]
+            predicted_source_val = test_data[self.source_col].iloc[pred_best_idx]
+            actual_best_source_val = test_data[self.source_col].iloc[actual_best_idx]
+
             record = {
                 "method": method_name or ranker.__class__.__name__,
                 "query_id": test_data["_query_id"].iloc[0],
-                "target_lang": test_data[self.target_col].iloc[0],
-                "predicted_best_source": test_data[self.source_col].iloc[pred_best_idx],
-                "actual_best_source": test_data[self.source_col].iloc[actual_best_idx],
+                "target_lang": target_lang_val,
+                "target_resource_level": resource_level(target_lang_val),
+                "predicted_best_source": predicted_source_val,
+                "predicted_source_resource_level": resource_level(predicted_source_val),
+                "actual_best_source": actual_best_source_val,
+                "actual_best_source_resource_level": resource_level(actual_best_source_val),
                 "predicted_performance": pred_best_perf,
                 "actual_best_performance": actual_best_perf,
                 "performance_loss": ploss,
@@ -668,6 +676,42 @@ def results_to_per_fold(results: list[EvaluationResult]) -> pd.DataFrame:
     if not frames:
         return pd.DataFrame()
     return pd.concat(frames, ignore_index=True)
+
+
+def results_to_transfer_type_loss(results: list[EvaluationResult]) -> pd.DataFrame:
+    """Per-method mean performance loss broken down by transfer type.
+
+    Each fold is bucketed by (predicted_source_resource_level, target_resource_level).
+    Cells are mean performance loss (in percentage units, matching summary CSVs).
+    Folds whose source or target glottocode is unclassified are excluded.
+    """
+    grid_columns = [f"{src}->{tgt}" for src in RESOURCE_LEVELS for tgt in RESOURCE_LEVELS]
+    target_columns = [f"*->{tgt}" for tgt in RESOURCE_LEVELS]
+    rows = []
+
+    for result in results:
+        df = result.per_fold
+        row: dict[str, object] = {"method": result.method_name}
+
+        for src in RESOURCE_LEVELS:
+            for tgt in RESOURCE_LEVELS:
+                key = f"{src}->{tgt}"
+                mask = (
+                    (df["predicted_source_resource_level"] == src)
+                    & (df["target_resource_level"] == tgt)
+                )
+                vals = df.loc[mask, "performance_loss"].dropna()
+                row[key] = float(vals.mean() * 100) if len(vals) else float("nan")
+
+        for tgt in RESOURCE_LEVELS:
+            key = f"*->{tgt}"
+            mask = df["target_resource_level"] == tgt
+            vals = df.loc[mask, "performance_loss"].dropna()
+            row[key] = float(vals.mean() * 100) if len(vals) else float("nan")
+
+        rows.append(row)
+
+    return pd.DataFrame(rows, columns=["method", *grid_columns, *target_columns])
 
 
 def pairwise_comparisons(results: list[EvaluationResult]) -> pd.DataFrame:
