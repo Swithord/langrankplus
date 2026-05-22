@@ -1,68 +1,223 @@
+from __future__ import annotations
+
+from typing import Sequence
+
 import numpy as np
+from scipy.stats import rankdata, ttest_rel
 from sklearn.metrics import ndcg_score
-from scipy.stats import ttest_rel, rankdata
 
 
-def relevance_from_performance(perf: np.ndarray, top_k: int = 10) -> np.ndarray:
-    """
-    Convert performance scores to graded relevance (top_k items get top_k..1, rest 0).
-    Uses 'min' rank method for ties (matching pandas .rank(method='min')).
-    :param perf: array of performance scores
-    :param top_k: number of top items to assign relevance to
-    :return: array of relevance scores
-    """
-    relevance = np.zeros(len(perf))
-    ranks = rankdata(-perf, method='min')
-    mask = ranks <= top_k
-    relevance[mask] = top_k + 1 - ranks[mask]
-    return relevance
+def _as_arrays(y_true, y_score) -> tuple[np.ndarray, np.ndarray]:
+    y_true = np.asarray(y_true, dtype=float)
+    y_score = np.asarray(y_score, dtype=float)
+
+    if y_true.shape[0] != y_score.shape[0]:
+        raise ValueError("y_true and y_score must have the same length")
+    if y_true.shape[0] == 0:
+        raise ValueError("At least one item is required")
+
+    return y_true, y_score
 
 
-def ndcg_at_k(y_true: np.ndarray, y_pred: np.ndarray, k: int = 3) -> float:
-    """
-    Compute NDCG@k for a single query.
-    :param y_true: true relevance scores
-    :param y_pred: predicted scores (higher is better)
-    :param k: cutoff
-    :return: NDCG@k
-    """
-    return ndcg_score([y_true], [y_pred], k=k)
+def _top_k_indices(y_score: np.ndarray, k: int) -> np.ndarray:
+    k = int(max(0, min(k, y_score.shape[0])))
+    if k == 0:
+        return np.array([], dtype=int)
+
+    order = np.argsort(-y_score, kind="mergesort")
+    return order[:k]
 
 
-def performance_loss(predicted_perf: float, optimal_perf: float) -> float:
-    """
-    Compute relative performance loss: |predicted - optimal| / optimal.
-    :param predicted_perf: performance of the predicted-best source
-    :param optimal_perf: performance of the actually-best source
-    :return: relative performance loss, or NaN if optimal is 0
-    """
-    if optimal_perf == 0:
-        return np.nan
-    return abs(predicted_perf - optimal_perf) / optimal_perf
+def ndcg_at_k(y_true, y_score, k: int) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+
+    if np.all(y_true <= 0):
+        return 0.0
+
+    return float(
+        ndcg_score(
+            y_true.reshape(1, -1),
+            y_score.reshape(1, -1),
+            k=int(k),
+        )
+    )
 
 
-def top_k_accuracy(y_true: np.ndarray, y_pred: np.ndarray, k: int = 1) -> float:
-    """
-    Whether the actual best source is in the top-k predicted.
-    :param y_true: true relevance scores
-    :param y_pred: predicted scores
-    :param k: cutoff
-    :return: 1.0 if hit, 0.0 otherwise
-    """
-    top_k_pred = set(np.argsort(y_pred)[-k:].tolist())
-    actual_best = int(np.argmax(y_true))
-    return float(actual_best in top_k_pred)
+def precision_at_k(y_true, y_score, k: int) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+    idx = _top_k_indices(y_score, k)
+
+    if idx.size == 0:
+        return 0.0
+
+    relevant = y_true > 0
+    return float(np.mean(relevant[idx]))
 
 
-def paired_ttest(scores_a: list[float], scores_b: list[float]) -> float:
-    """
-    Paired t-test between two lists of per-fold scores.
-    :param scores_a: first list (e.g. NDCG scores from method A)
-    :param scores_b: second list
-    :return: p-value
-    """
-    if len(scores_a) != len(scores_b):
-        raise ValueError(f"Score lists must have the same length: "
-                         f"{len(scores_a)} vs {len(scores_b)}")
-    _, p_value = ttest_rel(scores_a, scores_b)
-    return float(p_value)
+def recall_at_k(y_true, y_score, k: int) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+    relevant = y_true > 0
+    n_relevant = int(np.sum(relevant))
+
+    if n_relevant == 0:
+        return 0.0
+
+    idx = _top_k_indices(y_score, k)
+    return float(np.sum(relevant[idx]) / n_relevant)
+
+
+def hit_at_k(y_true, y_score, k: int) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+    idx = _top_k_indices(y_score, k)
+
+    if idx.size == 0:
+        return 0.0
+
+    relevant = y_true > 0
+    return float(np.any(relevant[idx]))
+
+
+def average_precision_at_k(y_true, y_score, k: int) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+
+    relevant = y_true > 0
+    n_relevant = int(np.sum(relevant))
+
+    if n_relevant == 0:
+        return 0.0
+
+    idx = _top_k_indices(y_score, k)
+    if idx.size == 0:
+        return 0.0
+
+    hits = relevant[idx].astype(float)
+    precision_values = np.cumsum(hits) / np.arange(1, idx.size + 1)
+
+    denominator = min(n_relevant, idx.size)
+    if denominator == 0:
+        return 0.0
+
+    return float(np.sum(precision_values * hits) / denominator)
+
+
+def exact_best_rank(y_true, y_score) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+
+    best_relevance = float(np.max(y_true))
+    best_mask = y_true == best_relevance
+
+    pred_ranks = rankdata(-y_score, method="ordinal")
+
+    return float(np.min(pred_ranks[best_mask]))
+
+
+def reciprocal_rank(y_true, y_score) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+
+    best_relevance = float(np.max(y_true))
+    if best_relevance <= 0:
+        return 0.0
+
+    rank = exact_best_rank(y_true, y_score)
+    if np.isnan(rank) or rank <= 0:
+        return 0.0
+
+    return float(1.0 / rank)
+
+
+def exact_best_hit_at_k(y_true, y_score, k: int) -> float:
+    rank = exact_best_rank(y_true, y_score)
+    if np.isnan(rank):
+        return 0.0
+    return float(rank <= k)
+
+
+def r_precision(y_true, y_score) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+    n_relevant = int(np.sum(y_true > 0))
+
+    if n_relevant == 0:
+        return 0.0
+
+    return precision_at_k(y_true, y_score, n_relevant)
+
+
+def err_at_k(y_true, y_score, k: int) -> float:
+    y_true, y_score = _as_arrays(y_true, y_score)
+    idx = _top_k_indices(y_score, k)
+
+    if idx.size == 0:
+        return 0.0
+
+    max_relevance = float(np.max(y_true))
+    if max_relevance <= 0:
+        return 0.0
+
+    relevance = y_true[idx]
+    satisfaction = (np.power(2.0, relevance) - 1.0) / np.power(2.0, max_relevance)
+
+    err = 0.0
+    continuation = 1.0
+
+    for rank, prob_stop in enumerate(satisfaction, start=1):
+        err += continuation * prob_stop / rank
+        continuation *= 1.0 - prob_stop
+
+    return float(err)
+
+
+def top_k_accuracy(y_true, y_score, k: int) -> float:
+    return exact_best_hit_at_k(y_true, y_score, k)
+
+
+def performance_loss(selected_performance: float,
+                     best_performance: float) -> float:
+    selected_performance = float(selected_performance)
+    best_performance = float(best_performance)
+
+    if best_performance <= 0:
+        return float("nan")
+
+    return float((best_performance - selected_performance) / best_performance)
+
+
+def compute_ir_metrics(y_true,
+                       y_score,
+                       cutoffs: Sequence[int]) -> dict[str, float]:
+    y_true, y_score = _as_arrays(y_true, y_score)
+
+    metrics = {
+        "mrr": reciprocal_rank(y_true, y_score),
+        "exact_best_rank": exact_best_rank(y_true, y_score),
+        "r_precision": r_precision(y_true, y_score),
+        "relevant_count": float(np.sum(y_true > 0)),
+    }
+
+    for k in cutoffs:
+        k = int(k)
+        metrics[f"ndcg@{k}"] = ndcg_at_k(y_true, y_score, k)
+        metrics[f"precision@{k}"] = precision_at_k(y_true, y_score, k)
+        metrics[f"recall@{k}"] = recall_at_k(y_true, y_score, k)
+        metrics[f"hit@{k}"] = hit_at_k(y_true, y_score, k)
+        metrics[f"map@{k}"] = average_precision_at_k(y_true, y_score, k)
+        metrics[f"err@{k}"] = err_at_k(y_true, y_score, k)
+        metrics[f"exact_best_hit@{k}"] = exact_best_hit_at_k(y_true, y_score, k)
+
+    return metrics
+
+
+def paired_ttest(values_a, values_b) -> float:
+    a = np.asarray(values_a, dtype=float)
+    b = np.asarray(values_b, dtype=float)
+
+    mask = np.isfinite(a) & np.isfinite(b)
+    a = a[mask]
+    b = b[mask]
+
+    if a.shape[0] != b.shape[0] or a.shape[0] < 2:
+        return float("nan")
+
+    if np.allclose(a, b):
+        return 1.0
+
+    return float(ttest_rel(a, b).pvalue)
