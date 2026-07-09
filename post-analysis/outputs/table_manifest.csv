@@ -1,0 +1,14 @@
+category,table_file
+necessary,tables/necessary/ctc_main_resource_by_method.csv
+necessary,tables/necessary/english_baseline_comparison_bootstrap.csv
+necessary,tables/necessary/main_metric_bootstrap_ci.csv
+necessary,tables/necessary/nnrank_restricted_metric_bootstrap_ci.csv
+necessary,tables/necessary/nnrank_restricted_task_balanced_resource.csv
+necessary,tables/necessary/resource_lmm_fixed_effects.csv
+necessary,tables/necessary/selection_opportunity_task_balanced.csv
+necessary,tables/necessary/target_resource_counts.csv
+necessary,tables/necessary/task_balanced_resource_by_method.csv
+other,tables/other/ctc_resource_by_dataset_method.csv
+other,tables/other/nnrank_restricted_pairwise_bootstrap.csv
+other,tables/other/pairwise_performance_loss_bootstrap.csv
+other,tables/other/selection_opportunity_by_dataset_resource.csv
