@@ -1,0 +1,811 @@
+dataset,task,model,model_name,metric,metric_name,method_a,method_b,outcome,mean_difference_a_minus_b,ci_lower,ci_upper,bootstrap_p_value,n_paired_units
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,-5.404748139157362,-10.456616385414222,-1.7939657273294116,0.0,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,-4.280588574474538,-9.405622330231674,-0.6831357784028597,0.0079,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,1.1084975841686888,-0.846671879115672,3.460192898405986,0.3209,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-0.7321450953947025,-3.370178716284841,1.6486785701822377,0.5843,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,-4.2161290204224455,-9.679099405076306,0.00928762348736633,0.0506,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,0.8239270178740615,-3.4547055222038767,4.638561945478374,0.6666,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-4.090139610023038,-8.103360373629164,-0.572905525453273,0.0205,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-7.522996905563861,-14.417005382208371,-1.9701659223331667,0.002,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-4.295693354763832,-7.922049204640577,-0.7557074459524868,0.0191,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,1.1241595646828246,-0.12332567562904422,2.8606999927795806,0.1134,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,6.513245723326051,1.5781348334522582,13.338150390602513,0.0012,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,4.672603043762659,0.48663400982068705,11.150708391320242,0.0112,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,1.188619118734915,-5.758749500577814,8.29067878035253,0.7396,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,6.228675157031423,-0.05202628676131436,13.566615624902509,0.0521,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,1.3146085291343237,-4.371853864291097,7.868515070951064,0.7031,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-2.118248766406501,-7.8956404009792625,2.309845266285552,0.4357,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,1.10905478439353,-3.999980300787866,8.077178364865592,0.8023,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,5.389086158643226,0.7770458623532145,11.945863435052564,0.0121,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,3.5484434790798347,-0.10004268636705174,9.650374757603654,0.0691,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,0.06445955405209088,-7.403914451572511,7.590236142818053,0.9893,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,5.104515592348598,-0.9029971878728672,12.247719149016879,0.1049,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,0.19044896445149898,-5.154668117584102,6.478007289152943,0.9914,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-3.2424083310893255,-8.68097555073988,0.6836438497451492,0.1341,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-0.015104780289294939,-5.700972591927573,7.288566610118729,0.9198,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-1.8406426795633914,-4.127698236575435,0.26796449409662665,0.0939,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,-5.324626604591135,-11.851964562216052,-0.1753593112766564,0.0402,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,-0.28457056629462746,-3.5500454743019034,2.52280514498135,0.8977,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-5.198637194191727,-9.081613580741852,-1.6637616453626802,0.0022,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-8.631494489732551,-16.835894122617166,-2.1097584333193318,0.0028,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-5.40419093893252,-10.41591505472,-1.2105045500557856,0.0092,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,-3.4839839250277445,-9.827290153640623,1.8326643518973718,0.2372,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,1.556072113268764,-2.394620149135135,5.07538566465177,0.411,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-3.3579945146283348,-7.0516435281977765,-0.445144618304811,0.0199,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-6.790851810169158,-14.600476693568227,-0.6145795002180005,0.0236,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-3.5635482593691292,-7.804184596689988,0.22752760454196197,0.0688,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,5.040056038296508,-1.817622371082028,13.290596617170754,0.18,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,0.12598941039940872,-6.5957565224279175,7.967180819575776,0.9816,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-3.306867885141416,-11.899649763468497,5.1774185161589745,0.4429,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-0.07956433434138517,-4.958079963348577,5.865232783373681,0.9246,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-4.914066627897101,-9.34316934194436,-0.15961226799489187,0.0427,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-8.346923923437922,-16.716742592353093,-1.514018164445371,0.0096,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-5.119620372637892,-10.896578802337741,0.31859431760049045,0.0674,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,-3.4328572955408245,-10.857512339793795,2.8438145336924223,0.3289,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-0.20555374474079385,-5.205039333096135,4.4036736376963495,0.9526,19
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,3.2273035508000305,-3.3148061667371045,11.036900071782057,0.3965,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,-2.3059762784501805,-13.275253577349085,7.096783390476518,0.6916,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,2.673642786946878,-7.6966576210404005,10.728018217299459,0.5234,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,3.369681152312132,-1.5617415687209133,9.629778380470132,0.2349,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,5.394239008864607,-2.8274466098610618,13.473675070804767,0.1934,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,9.438078744439757,3.51627458465043,15.90775004541327,0.0006,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,7.828770894986464,-0.30105920481349585,16.24841385831077,0.0597,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-5.077034438367642,-17.70794460753599,7.008252814039157,0.4269,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-5.3587733836352465,-17.057382240250956,5.0110241972143665,0.3433,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-9.567284378412795,-21.46928586286034,1.605007085990879,0.0933,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,4.979619065397058,0.7014207007836506,10.508982499033172,0.0061,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,5.675657430762312,-4.141470588824595,16.969806622870852,0.2912,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,7.700215287314788,-1.5979175289601797,18.37996949803637,0.1105,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,11.744055022889935,3.820702037046595,21.387490808019344,0.0016,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,10.134747173436642,0.7976531478025084,20.679517047707705,0.031,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-2.771058159917461,-11.225145985934153,5.222171781941967,0.5192,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-3.0527971051850655,-12.17872716256017,5.659081979331944,0.5109,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-7.261308099962616,-15.515922270057995,0.7181579864513854,0.0739,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,0.6960383653652542,-8.153832749145776,11.560290306447595,0.9534,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,2.720596221917728,-6.579852658087899,13.31925341345267,0.6296,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,6.7644359574928785,-0.8149245299352333,16.32907939130779,0.0936,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,5.155128108039586,-3.238739090541311,15.242767808769454,0.2708,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-7.75067722531452,-15.627774209069726,0.2505720956659101,0.0582,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-8.032416170582124,-15.849532478725639,-0.847428220265673,0.0262,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-12.240927165359674,-21.512091659615596,-3.105672348373361,0.0094,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,2.0245578565524744,-3.89072337745042,7.093573837322289,0.453,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,6.068397592127622,1.9979340449146867,10.491735955932588,0.0021,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,4.459089742674331,-1.9509018765781962,10.883235786554565,0.1731,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-8.446715590679775,-19.99863182448008,2.1455869266694254,0.1197,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-8.728454535947378,-20.516764088504672,1.9220780631133692,0.1128,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-12.936965530724928,-23.742547515329196,-3.591188800149246,0.0027,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,4.043839735575148,-0.7963351886387344,9.426346961779767,0.1072,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,2.434531886121857,-3.459049805575461,8.057224944011606,0.3871,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-10.47127344723225,-20.912013631018585,-1.419570952468804,0.021,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-10.753012392499855,-22.85595914549847,1.1191263430797425,0.0791,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-14.961523387277404,-25.31717650613629,-5.489327427418375,0.0016,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-1.6093078494532917,-5.846034534883656,2.274863185399265,0.4476,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-14.515113182807397,-23.979232538354445,-6.377763477985116,0.0,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-14.796852128075,-25.169183815494208,-5.464584179059044,0.0008,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-19.005363122852554,-28.650136818497877,-10.274279476722981,0.0,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-12.905805333354104,-22.915699169475566,-3.9419437675297333,0.0032,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-13.18754427862171,-24.430102003141265,-2.7128253994322344,0.0099,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-17.39605527339926,-28.31400711344213,-6.739938772652007,0.0012,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,-0.28173894526760523,-8.88861147141636,8.272814384959737,0.9501,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-4.490249940045155,-12.075617761108003,3.6967023198816964,0.2686,19
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-4.20851099477755,-13.30189835770284,5.208527809112433,0.3748,19
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Composite-Equal,performance_loss_pct,-3.080229207659821,-8.510715473698935,2.153557102337302,0.2544,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Composite-RRF,performance_loss_pct,-3.86797373077855,-9.895676057808268,1.960297260331114,0.1961,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Genetic,performance_loss_pct,-2.4222642257356597,-8.760078757386582,3.9487321383207274,0.452,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Geographic,performance_loss_pct,-7.2480236038340236,-14.33437508609402,-0.454034975374292,0.0356,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,LightGBM,performance_loss_pct,3.751108166340775,-0.5783358037092431,8.05908147716552,0.0878,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,MLP,performance_loss_pct,3.8708477470326303,-0.23148904121222308,7.9753288580919195,0.0638,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Script,performance_loss_pct,-16.58500902533693,-24.139755292964335,-8.995960040608344,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Typological,performance_loss_pct,-10.763350857939852,-17.528535219096163,-4.093485576189623,0.0017,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,ASJP,Wikipedia size,performance_loss_pct,-41.1738016115646,-48.57774703638589,-33.82040495785517,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,Composite-RRF,performance_loss_pct,-0.7877445231187289,-5.032310710311481,3.194743965637568,0.7161,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,Genetic,performance_loss_pct,0.6579649819241619,-5.652802961767297,7.155048643774379,0.8469,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,Geographic,performance_loss_pct,-4.167794396174205,-10.906027582782011,2.4589235699367475,0.2244,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,LightGBM,performance_loss_pct,6.831337374000598,2.100582835561285,11.820663524162592,0.006,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,MLP,performance_loss_pct,6.95107695469245,2.8906674853834593,11.534602941964334,0.0004,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,Script,performance_loss_pct,-13.504779817677106,-21.422701181259523,-5.499413905871051,0.0014,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,Typological,performance_loss_pct,-7.683121650280033,-15.299919202446958,-0.14939853762172936,0.0465,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-Equal,Wikipedia size,performance_loss_pct,-38.09357240390477,-45.36706321579055,-30.83000837973775,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,Genetic,performance_loss_pct,1.4457095050428912,-5.227593834084701,8.360681489972485,0.6873,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,Geographic,performance_loss_pct,-3.380049873055475,-10.237964384540664,3.2887803440748926,0.3262,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,LightGBM,performance_loss_pct,7.619081897119325,2.5144137930507338,12.962940394083661,0.0038,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,MLP,performance_loss_pct,7.73882147781118,3.001627894682574,12.922504425869716,0.0006,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,Script,performance_loss_pct,-12.717035294558382,-19.797488599639053,-5.754257699606984,0.0004,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,Typological,performance_loss_pct,-6.8953771271613045,-13.687858645482589,-0.058683461645271016,0.0479,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Composite-RRF,Wikipedia size,performance_loss_pct,-37.30582788078605,-44.16111291002182,-30.537497284533686,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Genetic,Geographic,performance_loss_pct,-4.825759378098366,-13.288076355051256,3.584326402776076,0.2587,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Genetic,LightGBM,performance_loss_pct,6.173372392076434,-0.1579574168096361,12.45827686636726,0.0566,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Genetic,MLP,performance_loss_pct,6.293111972768288,0.6064096279529794,12.025947412000065,0.0281,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Genetic,Script,performance_loss_pct,-14.162744799601269,-22.19927504652717,-5.952412786572301,0.0006,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Genetic,Typological,performance_loss_pct,-8.341086632204197,-16.58647827746451,-0.044697903521237765,0.0492,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Genetic,Wikipedia size,performance_loss_pct,-38.75153738582894,-45.55210332024151,-31.64955825184324,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Geographic,LightGBM,performance_loss_pct,10.999131770174802,4.458954008755748,17.70354375489558,0.0008,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Geographic,MLP,performance_loss_pct,11.118871350866655,4.624340003644013,17.955919087592186,0.0005,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Geographic,Script,performance_loss_pct,-9.336985421502902,-17.14745645726974,-1.3863292930521987,0.0234,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Geographic,Typological,performance_loss_pct,-3.51532725410583,-11.421305556047107,4.317254894314515,0.3796,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Geographic,Wikipedia size,performance_loss_pct,-33.92577800773058,-41.543489990033386,-26.378643412757018,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,LightGBM,MLP,performance_loss_pct,0.11973958069185446,-4.682332457353189,5.05976892832969,0.9618,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,LightGBM,Script,performance_loss_pct,-20.336117191677705,-27.524984247575475,-13.10382247740365,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,LightGBM,Typological,performance_loss_pct,-14.514459024280631,-21.29019836383556,-7.847775509881731,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,LightGBM,Wikipedia size,performance_loss_pct,-44.92490977790538,-52.02681385225217,-37.75712644057734,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,MLP,Script,performance_loss_pct,-20.455856772369557,-28.35780561085744,-12.479832378813539,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,MLP,Typological,performance_loss_pct,-14.63419860497248,-21.66240047423918,-7.757774232020779,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,MLP,Wikipedia size,performance_loss_pct,-45.04464935859723,-51.85908294562482,-38.20378781221902,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Script,Typological,performance_loss_pct,5.821658167397074,-2.2463992442928737,13.898599213567955,0.1582,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Script,Wikipedia size,performance_loss_pct,-24.58879258622768,-31.747175481790126,-17.64284889334795,0.0,87
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,Typological,Wikipedia size,performance_loss_pct,-30.410450753624747,-38.09887962388653,-22.93429843917682,0.0,87
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,-0.08448733377175326,-3.0749928115882974,2.896872827832474,0.968,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,0.5786657568019928,-2.3432102586517383,3.573398841204867,0.6988,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-1.5996560176196568,-4.2148683397157045,1.015769902048048,0.2309,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,1.071979469547878,-1.8608250772014259,4.03181741371534,0.4815,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,-0.8300151674251999,-4.045521774655224,2.435255433048773,0.6128,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,1.0479629225978864,-1.8746700634483155,4.0336620533835115,0.48,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,2.806404010958141,-0.1770166726709613,5.863685854618861,0.0661,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-1.5573397225948484,-4.792177110673998,1.7367128980195332,0.3531,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-2.537339796377204,-6.434525042856985,1.394022458647089,0.2098,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,0.6631530905737464,-1.3857616824317576,2.836714188298751,0.5494,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-1.515168683847903,-4.694059546177069,1.68364085721163,0.3402,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,1.156466803319631,-2.119067220435056,4.439773177368167,0.5,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-0.7455278336534468,-4.1917734223819245,2.7261956561217726,0.6644,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,1.1324502563696393,-1.8142750621294739,4.1118971763921,0.452,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,2.8908913447298947,-0.1798378180396603,6.100361737451012,0.0665,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-1.4728523888230958,-4.88325551343023,2.0389556510443874,0.4059,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-2.45285246260545,-6.274201655990463,1.3091061101690213,0.2079,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-2.1783217744216503,-5.377247030737013,0.9194047782369129,0.1705,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,0.4933137127458844,-2.305022901414856,3.2787637948198056,0.7345,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,-1.4086809242271927,-4.613760885449775,1.7695067027595688,0.3831,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,0.4692971657958929,-2.7014131556993983,3.5673253333071426,0.767,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,2.2277382541561472,-0.9834461125700417,5.479339862775851,0.1788,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-2.1360054793968426,-5.4356988775043975,1.233962668736683,0.2192,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-3.116005553179197,-6.900536604636294,0.649928938955271,0.1052,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,2.671635487167534,-0.5868711539713041,5.973574122573533,0.1087,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,0.7696408501944567,-2.4375236881680427,3.983896908806056,0.6358,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,2.647618940217543,-0.4226802183871535,5.738381717415941,0.0919,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,4.406060028577797,1.4702649496519504,7.415802966736954,0.0037,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,0.04231629502480796,-3.4763341584204484,3.5876694395255195,0.9734,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-0.9376837787575467,-4.868703284239827,2.9701997060370458,0.6464,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,-1.901994636973078,-4.625745204340534,0.7439267052098328,0.1649,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,-0.02401654694999138,-3.2057554995121142,3.1264183974023227,0.9942,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,1.7344245414102635,-1.1084262175219,4.564784767040222,0.2269,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-2.629319192142727,-5.796523516672416,0.5345929599283371,0.1107,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-3.609319265925081,-7.254492244800787,-0.01538792699991284,0.0488,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,1.8779780900230862,-1.5193349406637044,5.2475066442891105,0.2764,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,3.636419178383341,0.5487207524353274,6.808371019270288,0.0218,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-0.7273245551696491,-4.254404703916291,2.8836119015574293,0.6922,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-1.707324628952004,-5.588592513980558,2.180764982201809,0.3967,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,1.758441088360255,-0.5624685765372032,4.163382367118475,0.1475,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-2.6053026451927352,-5.784214964816148,0.6387411925381361,0.1167,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-3.5853027189750892,-7.102378403473155,-0.08967946771577903,0.0447,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,-4.36374373355299,-7.710991816866405,-1.0485225952174346,0.0099,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-5.343743807335344,-8.581221796268043,-2.1447108539212016,0.001,185
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-0.9800000737823552,-4.800452939205012,2.8630919326138837,0.6106,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,0.6087603837494328,-3.3106672496180214,4.546221894881089,0.7592,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,-0.4389246302791201,-4.5546306294681305,3.7014897980668464,0.8269,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,4.631965968328352,1.3658117396849039,8.066955378834365,0.0046,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-2.907241967614541,-7.436517938636623,1.581857111840913,0.2077,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,3.5690932139732676,-3.0329423661221804,10.045008979983697,0.2758,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,-5.779893360623152,-10.004544258342907,-1.643050883720696,0.0055,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,1.5429438353763123,-4.220378314755259,7.138518558948623,0.6024,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,0.8652841517222011,-3.724925782235691,5.3723856672017085,0.7203,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-6.006115983267016,-11.560158067657373,-0.4887607867441608,0.0341,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-1.0476850140285525,-3.423845134477521,1.3356232957668948,0.3794,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,4.0232055845789185,0.6694352862862576,7.519046236237344,0.0158,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-3.5160023513639733,-7.983575320867397,0.8949323777688468,0.1181,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,2.960332830223835,-3.0800456010885258,8.935900337705252,0.3297,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-6.388653744372585,-10.864273108116267,-1.9993160436609243,0.0043,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,0.9341834516268797,-4.907995766193447,6.594680597707968,0.7514,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,0.2565237679727685,-4.085216057073117,4.553403202882442,0.9151,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-6.614876367016447,-11.948749061149925,-1.386124584355423,0.0143,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,5.070890598607471,1.4782217544644118,8.752550443905397,0.0045,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-2.468317337335421,-6.8124822483181235,1.7918363429304462,0.2602,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,4.008017844252388,-2.149233656477862,10.205177834321479,0.2022,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-5.340968730344033,-10.17242156956141,-0.5394720734571424,0.0305,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,1.9818684656554315,-3.7684205090010363,7.682920890027435,0.4966,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,1.3042087820013206,-3.1253402595774893,5.680558826932609,0.5625,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-5.567191352987894,-10.576317030710415,-0.5387597040453075,0.0305,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-7.53920793594289,-11.943801933918119,-3.2979703696593217,0.0002,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,-1.0628727543550824,-6.9607860072087515,4.844463725075405,0.7237,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,-10.411859328951504,-15.060464708475132,-5.934876069044695,0.0,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-3.089022132952039,-8.627355416272039,2.317931230200722,0.2672,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-3.766681816606149,-7.559001934959136,-0.15489989803060114,0.0409,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-10.638081951595366,-15.414255297599667,-6.074141425656232,0.0,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,6.4763351815878085,0.002987462704324459,12.867221816852139,0.0497,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,-2.8726513930086117,-8.619286304663051,2.8913051612623755,0.3255,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,4.450185802990852,-1.562006087220415,10.289224033685306,0.1479,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,3.7725261193367405,-1.1755625025996308,8.802780404379424,0.1365,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-3.098874015652474,-8.434789530668652,2.2087041257870816,0.2545,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-9.34898657459642,-15.340955738115682,-3.3958170919315456,0.0023,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-2.0261493785969553,-7.923019535285346,3.8809720923584057,0.4921,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-2.703809062251067,-8.6011223239953,3.285250007561906,0.3612,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-9.575209197240286,-15.66102189202198,-3.327184169737362,0.0035,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,7.3228371959994645,0.8664659601790506,13.673583641018153,0.0253,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,6.645177512345353,1.4034130801260656,11.901662446287988,0.0127,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-0.22622262264386273,-6.28230975812286,5.838422060446611,0.943,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,-0.6776596836541109,-6.671541066189428,5.391411687049687,0.825,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-7.549059818643326,-13.40493441488556,-1.6484376116511146,0.0125,185
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-6.871400134989216,-11.97701637586644,-1.8512858396783445,0.0078,185
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,20.934734223327776,18.79590263645019,23.0170426860789,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,19.75872672664977,17.6004155046201,21.909321216039704,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-2.797746714607966,-4.520455115787243,-1.0412871341154721,0.0013,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,7.3054392884443295,5.06231163045963,9.499510905643252,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,36.758867905443864,34.54485925907155,38.94809973375822,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,20.415233439118783,17.985822421935907,22.770375653675945,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,5.688553153740931,3.8443903317183166,7.522901298661003,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,1.3188878498274337,-0.6677729796816811,3.2718084492428936,0.195,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,1.8698078970586511,0.07527150902414433,3.6719885191939876,0.0416,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-1.1760074966780087,-2.3518004529851892,-0.01921189319380037,0.0469,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-23.732480937935748,-25.85196644633902,-21.588397856221196,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-13.62929493488345,-15.525604061195908,-11.793713892657596,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,15.824133682116083,13.948337797638041,17.732162195886612,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-0.5195007842089968,-2.524281425136861,1.3966328622695738,0.6018,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-15.246181069586846,-17.118534097654877,-13.323124294902897,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-19.615846373500347,-21.665600297934457,-17.591278158765157,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-19.064926326269127,-20.946999885442544,-17.092673474133647,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-22.55647344125774,-24.746085420584297,-20.32270513604596,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-12.453287438205441,-14.404988679079066,-10.525515515829941,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,17.00014117879409,15.106519523745241,18.93097969549596,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,0.6565067124690118,-1.4535151077038406,2.753015399743626,0.5385,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-14.07017357290884,-16.043420852515876,-12.072087693905706,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-18.439838876822336,-20.538790442660183,-16.366720423615526,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-17.888918829591123,-19.868575077794045,-15.82177951726875,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,10.103186003052297,7.7076352398959855,12.464619350561911,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,39.556614620051825,37.473085547092985,41.62709679657894,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,23.212980153726747,20.825981246985755,25.559419685019282,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,8.486299868348897,6.862817908492613,10.104987527874448,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,4.116634564435399,2.450075371925942,5.7537655965807515,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,4.667554611666618,3.1908188486553026,6.150982043923587,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,29.45342861699953,27.279518826535874,31.656848570955084,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,13.109794150674453,10.773783585511948,15.439816264005843,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-1.6168861347033974,-3.688827519091128,0.49011420965484065,0.1344,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-5.986551438616895,-8.283410535390486,-3.7033888963981267,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-5.435631391385678,-7.581873903487839,-3.234118696672179,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-16.343634466325078,-18.26565708513385,-14.4927513746551,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-31.07031475170293,-32.980596258706356,-29.175477002005824,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-35.43998005561643,-37.447030849131636,-33.42360742318227,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-34.889060008385215,-36.717089020682984,-33.005833337825855,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-14.726680285377851,-16.926784269476087,-12.506916447691825,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-19.096345589291353,-21.319415393959,-16.8240804665542,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-18.54542554206013,-20.795058657297872,-16.271295682141538,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,-4.369665303913497,-6.178811809910156,-2.5770166724909043,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-3.81874525668228,-5.059244767870029,-2.54453691482489,0.0,762
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,0.5509200472312177,-1.1256720012142851,2.2447174435942374,0.5108,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,25.187753740931555,23.080230173690328,27.276932634449704,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,21.350499529580887,19.2531696752001,23.424549792258436,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-8.042542633364038,-9.562319389084074,-6.540148062615523,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,15.89587159738519,13.809352089907096,17.99612236638698,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,45.083300996825216,43.006882035004736,47.16158949181921,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,43.345246995528235,41.14553414085947,45.49631089580891,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-4.619455841537301,-6.341455141268438,-2.879885724003564,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,9.070940514127042,6.928123248593183,11.225857968704165,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-7.082731488215394,-8.768881422880606,-5.42501304987883,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-3.83725421135067,-5.09030699251989,-2.6181091788350415,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-33.2302963742956,-35.2238517966331,-31.247201008849004,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-9.291882143546367,-11.460500294298111,-7.147141415727996,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,19.895547255893664,17.983616102333436,21.833282884320386,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,18.157493254596687,16.19747192831512,20.12390633916615,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-29.807209582468854,-31.98589678378019,-27.655203688226077,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-16.116813226804517,-18.5158181001727,-13.777638836532027,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-32.27048522914695,-34.36995671504942,-30.16736139739328,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-29.393042162944923,-31.41428369538123,-27.40371141194716,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-5.454627932195698,-7.608437432853257,-3.3187120966234773,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,23.732801467244332,21.72027977182352,25.790574525871474,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,21.99474746594736,19.938083225874298,24.070076565378525,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-25.969955371118186,-28.142644166945633,-23.784258952861766,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-12.279559015453845,-14.697093593826363,-9.90696440198253,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-28.43323101779628,-30.577989816029884,-26.27074627770386,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,23.938414230749224,22.059568726371154,25.837522251560703,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,53.12584363018925,51.22793147274699,54.982461706823166,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,51.38778962889227,49.39626219383131,53.30793931560608,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,3.423086791826738,2.2575637980709664,4.591939195851855,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,17.113483147491078,15.24393193200388,19.00606517029126,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,0.9598111451486419,-0.05284232434178723,1.97324297527738,0.0627,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,29.18742939944003,27.079701984835268,31.32790129671194,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,27.449375398143058,25.235940341371705,29.651927409359146,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-20.515327438922487,-22.60071700062502,-18.439144016651948,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-6.824931083258147,-9.160548103622085,-4.480615743624917,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-22.978603085600582,-24.99774793866632,-20.98096689922428,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-1.7380540012969747,-2.7758726360964467,-0.7361582586049984,0.0007,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-49.70275683836252,-51.64872143139479,-47.6889516678417,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-36.01236048269818,-38.29395253130846,-33.78550384379829,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-52.16603248504061,-54.03660899245437,-50.258085133813005,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-47.96470283706555,-49.97824182176537,-45.88428585371104,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-34.2743064814012,-36.64664306980846,-31.951122817736678,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-50.42797848374364,-52.38933374750933,-48.42457324600559,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,13.69039635566434,11.615905144608675,15.8040713859473,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-2.4632756466780963,-3.440126713287515,-1.5199318875402426,0.0,762
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-16.153672002342436,-18.16841416260942,-14.179459176910845,0.0,762
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,4.425021101918205,0.0,12.286349327710989,0.0507,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,6.24586981031783,0.4558052632505074,14.235484877492674,0.0086,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-6.566244629736939,-20.52185118733703,8.202713213520079,0.3705,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-1.4594688989425435,-4.660839631748865,0.2438812091499288,0.7004,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,4.093154981370919,-3.2859360765879693,14.381163105934275,0.4146,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,-0.3815727208473692,-13.738503769657399,13.012406480206216,0.9307,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,1.681262369782748,-3.9817145135090093,10.347290022659813,0.7212,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,5.217205208835389,-2.0847173758709823,15.45445339941888,0.2569,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,2.079903227498668,-2.847992168201932,8.354911587791982,0.515,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,1.8208487083996243,0.0,5.462546125198873,0.7004,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-10.991265731655144,-21.653548344216073,-1.6300832019543088,0.0191,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-5.884490000860748,-13.745818226653533,-0.38736210212429967,0.049,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-0.3318661205472849,-3.9711241292367245,3.3530487572864924,0.859,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-4.806593822765574,-15.155354699248374,2.780431539245212,0.3102,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-2.7437587321354564,-5.255909808156632,-0.6810684329621212,0.0121,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,0.7921841069171836,-3.0869533785132095,4.706100764657982,0.7208,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-2.3451178744195365,-6.2229224702510715,1.6754544393541788,0.2414,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-12.812114440054769,-23.967222392707225,-2.4312375668832495,0.0113,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-7.7053387092603725,-17.867276191979418,-0.38736210212429967,0.049,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,-2.15271482894691,-7.890002370797043,2.8806599281990306,0.4505,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-6.627442531165199,-17.30824422308127,1.8951144846160752,0.1577,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-4.564607440535081,-8.308146764302439,-1.2901981114576941,0.0015,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-1.028664601482441,-4.912378748599948,3.1207543282926427,0.6169,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-4.165966582819161,-7.2501121832629725,-1.305753369895551,0.0001,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,5.106775730794396,-9.352205238980327,19.198698258458478,0.4797,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,10.659399611107858,3.254630292640184,19.659070932869,0.0013,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,6.18467190888957,0.8471039295019042,12.05049064712636,0.0205,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,8.247506999519686,-1.3081047233266787,18.341975508107648,0.0949,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,11.783449838572327,2.91416728565226,20.7604700203996,0.0088,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,8.646147857235608,-3.2263307796096616,21.231964258393916,0.1675,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,5.552623880313463,-2.0596880140938523,15.703023513360339,0.2094,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,1.0778961780951732,-12.618820144327163,14.087878987652061,0.8735,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,3.1407312687252915,-3.6570680371320257,12.115402506674862,0.4771,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,6.676674107777932,-1.8389710913869892,17.442101517766655,0.1648,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,3.5393721264412115,-2.8347556823438924,11.349937448133716,0.3458,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-4.474727702218289,-13.346258269043947,0.5019975244989533,0.2689,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-2.4118926115881716,-6.374636138306113,2.128620903167537,0.2745,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,1.1240502274644686,-2.9419786055493184,5.3555244382439815,0.6038,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-2.013251753872252,-8.05118350781138,4.1881549425493265,0.523,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,2.062835090630118,-4.777411734932304,11.010263230963181,0.6659,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,5.598777929682758,-0.1367744828789483,13.26605694139606,0.0595,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,2.461475948346038,-7.167172844792397,14.314211973911451,0.6954,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,3.5359428390526397,0.8953780860195756,6.276758644523138,0.0122,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,0.39864085771591995,-3.2629088055788453,4.024645570096578,0.8253,9
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-3.1373019813367202,-8.534603442129296,1.7873433693089187,0.2293,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,7.270568446293542,0.0,17.135610683024495,0.0507,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,12.242612877469409,1.7234328378839787,24.90038298711384,0.0086,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-2.9760193346830413,-17.030830914429874,11.03749349883313,0.6737,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,3.556353354445492,0.0,7.60183552998814,0.0501,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,1.4583864990624607,-5.482707821360382,9.321641426279333,0.7148,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,10.486382460988082,-0.30663166670212433,21.917858972435315,0.0571,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,0.7777862883142055,-2.5824032733909235,4.479684707028543,0.6893,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,10.034244690497653,1.0600522935706855,20.64986203033416,0.0202,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,1.704210831999062,-11.646761868585502,13.789199919573043,0.7783,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,4.972044431175867,0.0,14.9161332935276,0.7004,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-10.246587780976583,-20.186332341471854,-1.002666027034535,0.0256,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-3.714215091848049,-14.802638391795076,3.6650681529495777,0.5301,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-5.81218194723108,-16.93398734496938,2.8308077073270885,0.2627,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,3.215814014694541,-4.6886289641153995,12.640178389231512,0.4944,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-6.492782157979336,-16.350522134815083,-0.6372820104082612,0.0121,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,2.7636762442041114,-3.032489276011678,11.788870071115412,0.6382,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-5.566357614294478,-22.296059230476057,9.737709163718735,0.5169,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-15.21863221215245,-24.591410954089095,-6.389188694653017,0.0001,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-8.686259523023915,-19.932249626903292,-0.005075036698648777,0.049,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,-10.784226378406947,-26.16644565675811,2.204861243821382,0.1244,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-1.7562304164813254,-7.168097020695264,3.3386231060999805,0.5255,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-11.464826589155201,-25.02044489508437,-1.3315993861817466,0.0015,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-2.2083681869717555,-4.728133406620843,0.22291555587082554,0.0763,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-10.538402045470345,-25.144061717884433,1.4310476199893563,0.1186,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,6.532372689128534,-6.923416656489346,19.087464791718805,0.3247,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,4.434405833745501,-9.393105512818382,17.61425694046443,0.5095,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,13.462401795671122,6.542147095878909,21.7043946687645,0.0,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,3.7538056229972465,-9.5016174163861,16.25197925698196,0.559,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,13.010264025180694,5.264424770450081,21.293991313260296,0.0,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,4.680230166682104,-13.456679425197219,20.735598469599864,0.5867,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,-2.0979668553830315,-8.782734576201522,3.736473771416657,0.5447,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,6.93002910654259,-2.131999961568504,17.056673515574495,0.1445,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-2.7785670661312865,-5.402965503882635,-0.601462067830446,0.0112,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,6.477891336052161,-1.2745640208165223,16.168087856265362,0.1617,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-1.8521425224464296,-13.691198338760692,7.8336799619170865,0.7914,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,9.027995961925622,-0.08005210791093337,21.503479656263178,0.2086,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-0.6806002107482549,-6.208477570379249,5.340661578050995,0.7979,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,8.575858191435193,-3.178478145020704,21.91854570550961,0.176,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,0.24582433293660225,-13.975350605609911,14.668162038315245,0.9862,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-9.708596172673875,-20.485127171032662,0.36440318661517324,0.0605,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-0.4521377704904304,-5.532010586787246,4.905692571388331,0.8449,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-8.78217162898902,-22.94359924277879,3.3421867394168485,0.1902,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,9.256458402183448,0.8601975662790866,20.460359985019412,0.0122,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,0.9264245436848567,-10.778407348318469,12.051858037852005,0.8607,9
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-8.33003385849859,-22.93092615797947,2.777911573361744,0.204,9
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,0.15922747729087824,-3.117538201035172,3.333339902160082,0.9282,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,-0.22339318325820887,-3.838296166764526,3.2223971251954167,0.9136,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-4.82479533973977,-9.124492004956235,-0.6947788644476297,0.0232,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-7.007998850788287,-11.789327249495633,-2.3789014702519156,0.0024,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,3.41930870258342,0.06425848172834929,6.7363198930566455,0.0459,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,-0.07425854920711712,-2.7796352825531025,2.595343303856962,0.9592,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-15.796591762160869,-20.369059357165355,-11.293488531685778,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-5.369110694999637,-9.652576682404497,-1.1332886126994866,0.0103,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-16.423258769276426,-21.99380120979817,-10.912162377029505,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-0.3826206605490865,-3.1938468882429207,2.533116524321211,0.7992,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-4.984022817030647,-9.152002567031136,-0.8544718054578309,0.0176,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-7.167226328079165,-12.180848398310626,-2.4403369206077112,0.0034,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,3.260081225292542,-0.2165050879635108,6.8521666957869405,0.0672,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-0.23348602649799519,-2.5204771743434895,2.0733128118595707,0.8431,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-15.955819239451746,-20.522811250438064,-11.334840203586058,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-5.528338172290514,-10.28283105533712,-0.6970789461605356,0.0254,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-16.582486246567303,-21.76116528452659,-11.319102178333065,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-4.6014021564815595,-8.98560784566481,-0.2664199814529269,0.037,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-6.784605667530077,-12.094112663507207,-1.6315971521492152,0.0109,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,3.6427018858416282,-0.12910090977647104,7.506750145305676,0.0589,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,0.1491346340510914,-2.7418623314300183,3.085687340495473,0.9164,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-15.573198578902659,-20.1272536922858,-11.08226213323499,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-5.145717511741427,-9.879174453911817,-0.3070770382949962,0.035,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-16.199865586018216,-21.318174487748696,-11.071581792917181,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-2.1832035110485184,-8.00104185497917,3.487780549179553,0.4585,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,8.244104042323187,3.869654930513082,12.656069470973607,0.0001,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,4.750536790532651,0.8493436541747935,8.729793500708656,0.0166,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-10.971796422421097,-15.901756787680505,-6.095097020070349,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-0.5443153552598672,-6.216014130693836,5.141227976456028,0.8502,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-11.598463429536656,-17.384710688334476,-5.83797792769849,0.0003,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,10.427307553371708,5.901849614801464,15.109038884776574,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,6.933740301581169,2.204993420949645,11.839944523463366,0.0043,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-8.78859291137258,-13.786880037865423,-3.748745116052806,0.0006,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,1.638888155788651,-3.5076407492820687,6.858736562061216,0.5404,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-9.415259918488136,-14.787347914055538,-3.923067483443468,0.0009,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-3.493567251790537,-6.82701634045618,-0.3343461357089823,0.0288,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-19.215900464744287,-23.44935816027523,-14.976715844316363,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-8.788419397583056,-13.20649476075887,-4.338076669531147,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-19.84256747185984,-25.154717172591205,-14.464407447390316,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-15.722333212953753,-20.140281346552385,-11.344821638856985,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-5.29485214579252,-9.963462956910883,-0.47790321253212037,0.0304,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-16.349000220069307,-21.943859121653627,-10.731679571654034,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,10.427481067161231,5.251267248596357,15.481916945315575,0.0,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-0.6266670071155558,-6.022394604043445,4.859411112535805,0.826,147
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-11.054148074276787,-16.399666917272725,-5.920996795552401,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,1.4347332042783818,-2.575055835545173,5.332687342607764,0.4797,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,2.8940796975185568,-0.9868008994730835,6.7086496618426406,0.1498,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-1.8650009833244743,-5.842891878966296,1.9764888296047791,0.3434,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-10.14149524431684,-14.940566813309934,-5.292334874960537,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,6.154094004355565,1.6737167393317953,10.546485800605334,0.0064,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,2.0766565482000208,-1.4500711010242464,5.677039042027917,0.2656,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-11.450301657241898,-16.478875172095215,-6.413393175708387,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-6.5643912394366,-11.17071749729269,-2.131442739863755,0.0028,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-15.338412702752839,-20.924935806987875,-9.946147654868966,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,1.4593464932401754,-1.8246446894248578,4.757811735864482,0.3797,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-3.299734187602855,-7.2993716825177195,0.6893899296888303,0.1064,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-11.57622844859522,-16.321638857011468,-6.776013179030925,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,4.719360800077184,0.5835268865584317,8.897250719425212,0.026,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,0.6419233439216396,-2.7561020169219663,4.045417801225664,0.7139,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-12.885034861520278,-18.04508018632544,-7.637558762629875,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-7.999124443714979,-12.771305930209351,-3.2202192238941008,0.0007,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-16.77314590703122,-22.012954504333752,-11.637678719424338,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-4.759080680843032,-8.890698154879207,-0.6938899561666229,0.0204,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-13.035574941835396,-17.89553869868889,-8.046176763759004,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,3.260014306837009,-1.0909473170368786,7.5149556031874605,0.1353,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-0.8174231493185357,-4.427306141649237,2.7321467000869686,0.6533,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-14.344381354760454,-19.343615758036503,-9.385194196909033,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-9.458470936955155,-14.004706586568771,-4.912069129689505,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-18.232492400271394,-23.39529273626873,-13.084555385700204,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-8.276494260992363,-13.367598405420399,-3.2074388079996816,0.0005,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,8.019094987680038,3.592745233808151,12.377522098785978,0.0006,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,3.9416575315244953,0.01081948906022294,7.905559370110265,0.0495,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-9.585300673917423,-14.751487195861575,-4.551635976463727,0.0004,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-4.699390256112124,-9.62967723306975,0.2754832659344861,0.0644,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-13.473411719428364,-18.94814407191468,-8.04053584478794,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,16.295589248672407,11.136017469263988,21.45286330674702,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,12.218151792516862,7.319545502214006,16.92397443754114,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-1.3088064129250583,-6.449648774869947,3.8416728400944082,0.6119,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,3.5771040048802405,-1.6530727548443152,8.767181682137867,0.185,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-5.1969174584359985,-10.330680007652667,-0.10359596128653627,0.0453,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-4.077437456155545,-7.703659067395114,-0.5088522983006316,0.026,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-17.60439566159746,-22.538439783863538,-12.774119900375963,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-12.718485243792164,-17.654677603911978,-7.882944416444791,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-21.492506707108404,-26.95089023157655,-16.078625472198862,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-13.526958205441918,-18.124832468488453,-9.037457834087588,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-8.64104778763662,-13.226509179045301,-4.129600971077282,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-17.41506925095286,-22.79977486628619,-11.998444599807472,0.0,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,4.8859104178053,-0.32427478745822175,10.112265258178144,0.0642,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-3.8881110455109393,-9.078289791376925,1.2963910543027508,0.1415,147
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-8.774021463316238,-13.688063885521126,-3.876181925827172,0.0002,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,3.883473626955793,0.7320014629674936,7.0787101317803485,0.0145,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,4.573692759815146,1.3452860858636448,7.91577545358262,0.0052,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-2.547424837110894,-5.414876739071726,0.3111614741440633,0.0846,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-7.260886168248251,-11.429472571370844,-3.174597659062582,0.0001,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,0.639360469676518,-2.465963185886039,3.8035719777443333,0.689,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,2.1301401918159315,-0.5424494233578386,4.909244418712702,0.1207,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-7.719929548478439,-12.010015669520493,-3.326491980973613,0.0007,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-4.692402797306619,-8.833002254399824,-0.6113679950197863,0.0222,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-9.122774128588578,-13.46488649990773,-4.767712265181699,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,0.6902191328593524,-1.4732294159919779,2.915937318421625,0.5391,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-6.430898464066687,-9.345856905257474,-3.504747672609178,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-11.144359795204043,-15.092952016073227,-7.351424720144476,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-3.244113157279275,-6.155982067027675,-0.4705470817127935,0.0199,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-1.7533334351398626,-4.48507442779814,0.9567262787667967,0.2088,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-11.603403175434233,-15.522666635231673,-7.6872117554221875,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-8.575876424262413,-12.753627049062631,-4.41047503490763,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-13.00624775554437,-16.618963493840493,-9.361014654429164,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-7.12111759692604,-10.240841333941656,-3.9973229465625617,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-11.834578928063396,-15.800112081652184,-7.951131537605749,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,-3.9343322901386273,-6.746524052691521,-1.2990563430892523,0.0031,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-2.4435525679992147,-5.1135745836015944,-0.009100141358933512,0.0484,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-12.293622308293585,-16.031014939310886,-8.599132073394372,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-9.266095557121766,-13.36828094261666,-5.282443469256921,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-13.696466888403723,-17.428899828114144,-9.953745708982671,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-4.713461331137356,-9.262565285690442,-0.41417876702741435,0.0306,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,3.1867853067874123,-0.2638327602506361,6.556286097444263,0.0695,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,4.677565028926824,1.4592153745062046,7.933844379417603,0.0055,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-5.172504711367545,-9.260116043543693,-1.1822623870969151,0.0103,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-2.1449779601957255,-6.788659903194481,2.395233148141413,0.3541,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-6.575349291477684,-11.18785859344122,-2.05000889592983,0.0042,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,7.900246637924767,3.7480833626757044,12.159030023556301,0.0001,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,9.391026360064183,5.305168624735296,13.544067847483333,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-0.45904338023019,-4.474106984107497,3.4405970479781964,0.8198,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,2.56848337094163,-1.8225427819612379,6.98984277043401,0.2626,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-1.8618879603403282,-5.999671518236584,2.3240402702703964,0.3862,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,1.4907797221394128,-0.6720406117795775,3.6830601016793176,0.175,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-8.359290018154956,-12.392263304340041,-4.237134362904642,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-5.331763266983137,-9.395352069767549,-1.3310552236897741,0.0091,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-9.762134598265096,-13.885784540729798,-5.667811994234797,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-9.850069740294371,-14.068027991079232,-5.547360973053563,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-6.82254298912255,-10.884640557701818,-2.789527708481644,0.0009,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-11.252914320404507,-15.479326913540994,-7.022955423221485,0.0,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,3.0275267511718194,-1.4273617377786132,7.473713857568498,0.1847,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-1.4028445801101384,-5.51303844680482,2.696150316489303,0.5075,147
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-4.4303713312819575,-8.594523801986405,-0.21480104504716493,0.039,147
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,2.280080376841929,0.7229886481696539,4.030761030897409,0.0022,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,1.5659060135226595,-0.26369095749381316,3.5210165782932834,0.0959,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-1.1250467650010025,-2.9585096021248876,0.7552842288523363,0.2381,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,1.449939032093513,-0.7737576545677678,3.76282431646376,0.2085,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,2.199248269057572,-0.31198262076232486,4.762626763372723,0.0863,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,2.1508721886181217,0.5294374332577222,3.9710971551075036,0.0091,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-0.04838136819442224,-2.1839923296504105,2.1453566993713666,0.9498,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,3.06533899084422,0.854028780347716,5.417632313464251,0.0052,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,0.5301203200033048,-2.463950788475392,3.632384504375566,0.7366,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-0.7141743633192696,-1.775939395280416,0.2844036408355211,0.1645,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-3.4051271418429314,-5.207660015968454,-1.6529791676040357,0.0003,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-0.8301413447484165,-2.6976810690380564,0.9249063261790225,0.3587,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-0.08083210778435716,-2.1611802601734658,1.9885171966049877,0.9449,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-0.12920818822380772,-1.285302536218355,0.9331069835742731,0.8282,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-2.3284617450363516,-3.9872364698569136,-0.8051526331508833,0.0017,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,0.7852586140022904,-0.7039766975572331,2.3593935636722385,0.3118,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-1.7499600568386247,-4.297220755854032,0.8317813998939695,0.1737,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-2.690952778523662,-4.583297960075286,-0.796445273363946,0.0055,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-0.11596698142914658,-1.8134606089714607,1.5085148354554234,0.8964,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,0.6333422555349125,-1.3662360611112077,2.6299508462871497,0.5197,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,0.584966175095462,-0.825593961698749,2.051175089956689,0.427,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-1.614287381717082,-3.323347598994632,0.004234758842523776,0.0509,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,1.4994329773215602,-0.08959782153056349,3.139607442744909,0.0648,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-1.0357856935193546,-3.4583203373868474,1.4002028463944327,0.395,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,2.574985797094516,0.2553873322780828,4.897613075829943,0.0306,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,3.3242950340585744,0.9180382100304056,5.777715547435266,0.0068,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,3.275918953619124,1.3822564362623888,5.246752871719745,0.0003,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,1.0766653968065805,-1.1533478970173145,3.3062924640498363,0.338,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,4.190385755845223,2.089438990288807,6.378552659047926,0.0001,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,1.6551670850043076,-1.2946050292689049,4.626785924648083,0.2702,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,0.7493092369640592,-1.26212352813964,2.8418528544172665,0.4653,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,0.7009331565246086,-0.7984142813593268,2.368669837820728,0.3819,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-1.4983204002879351,-3.2623225705266563,0.29875618051872876,0.1058,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,1.6153999587507069,-0.3521309363617496,3.710110014055316,0.109,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-0.9198187120902079,-3.6980699540884086,1.9704502193515314,0.5261,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-0.04837608043945046,-2.2119172732856653,2.0878855129607348,0.951,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-2.2476296372519946,-4.400551262855588,-0.11561856395434157,0.0391,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,0.8660907217866476,-1.2927447026803955,3.060494113062722,0.4324,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-1.6691279490542674,-4.396473165101276,1.0582147275553468,0.2197,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-2.1992535568125438,-3.9204867900903726,-0.572085424346905,0.0081,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,0.9144668022260982,-0.7783347726959818,2.6926760154978275,0.2984,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-1.6207518686148166,-4.179626637302638,0.9671283459861417,0.2114,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,3.113720359038642,1.3065321487747485,5.005594893987446,0.0009,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,0.578501688197727,-1.8515329857260339,3.07742890008832,0.6443,144
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-2.5352186708409152,-4.707156968857352,-0.38884907293603915,0.0203,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,1.9010609532771494,-0.15987228043671123,4.106069826487384,0.0696,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,-0.5606215877481459,-3.485874513588276,2.3251645362134847,0.7016,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,-2.947211940786756,-6.233226245597667,0.3320314369575612,0.0779,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-1.0985741784163874,-4.178090198148811,1.9884839719739293,0.4845,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,0.8448103140258243,-2.3112463713656304,3.8670876727810155,0.573,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,1.2549359732315222,-0.5957130082491062,3.3277289024498082,0.2006,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-2.9545107927559946,-6.272835918116052,0.22691074760238766,0.0684,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,-1.4232099758588805,-4.231876513433228,1.4429244635324823,0.3219,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-6.066593865629845,-9.730549988535254,-2.3518644837081735,0.0016,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-2.4616825410252954,-4.732135499747762,-0.43635804978799353,0.0141,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-4.848272894063906,-7.891233260958688,-1.8722666699270978,0.002,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-2.9996351316935366,-5.575651537806828,-0.5459178584499536,0.0156,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-1.056250639251325,-3.469239931444156,1.109158129853744,0.3611,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-0.6461249800456275,-1.7594616698153092,0.4100479260363398,0.2358,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-4.855571746033143,-7.804625932189086,-2.188689671090585,0.0001,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-3.32427092913603,-5.67428593284553,-1.0408999537112307,0.0043,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-7.967654818906995,-11.260812413827358,-4.728420671154443,0.0,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-2.3865903530386094,-5.138166873656273,0.513069224914137,0.0988,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-0.5379525906682413,-3.552480259904485,2.504021950879142,0.7207,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,1.4054319017739703,-0.5280964361048575,3.3389547214604023,0.1491,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,1.815557560979668,-0.3925858399680844,4.229093463003464,0.1088,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-2.393889205007848,-4.957133576299572,-0.049570744411837245,0.0457,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-0.8625883881107349,-3.148798936399933,1.4756687560118629,0.4656,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-5.505972277881701,-8.438918154691333,-2.6667317913508666,0.0,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,1.8486377623703685,-1.6994229680183313,5.3921926798511,0.3075,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,3.792022254812581,0.9599976624805981,6.516052945460426,0.0082,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,4.202147914018278,1.3544144067087773,7.151511842004347,0.0056,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-0.007298851969237753,-3.4361431303842966,3.246252693375149,0.9868,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,1.5240019649278753,-1.6787606129048018,4.644689719583026,0.3475,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-3.1193819248430907,-6.855397530455645,0.6185604108846655,0.1028,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,1.9433844924422117,-0.8979143945039046,4.771503133183336,0.1707,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,2.3535101516479093,-0.310024345060052,5.0820434402237105,0.0811,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-1.8559366143396068,-5.040997356198307,1.1497119380804721,0.2352,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-0.3246357974424934,-3.245387385420216,2.7583202833903036,0.8207,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-4.968019687213459,-8.583325577254058,-1.3523209923740043,0.0085,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,0.4101256592056976,-1.9089781056537598,2.945075909107097,0.7646,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-3.799321106781818,-6.39111120397991,-1.327755481859706,0.0023,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-2.2680202898847046,-4.831627928779602,0.3340508717115461,0.086,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-6.91140417965567,-10.042297718769165,-3.811752432350853,0.0,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-4.209446765987516,-7.331213294345633,-1.3624315032371261,0.0026,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-2.678145949090403,-5.134726140199407,-0.33444390531483226,0.0248,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-7.321529838861368,-10.742299254974455,-3.9500499400099964,0.0,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,1.5313008168971136,-1.3259879134519874,4.5498864435343815,0.3042,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-3.112083072873852,-6.244473892316641,0.1318826049715057,0.0597,144
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-4.643383889770965,-7.639371307476269,-1.694371714999008,0.0017,144
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,7.227222125713193,-0.07529431959015463,15.694759085605988,0.0572,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,7.187216791668652,-0.12843081405481102,15.681280020680587,0.0634,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,7.8702961982505,-0.045145850870661565,16.508555564876723,0.0588,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,7.448778482456081,0.047700055363419244,16.15506324429351,0.0467,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,7.565372475897032,-2.4886220272259347,18.161784469053664,0.1454,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,0.2689872241192898,-7.891755516086367,8.789202089578364,0.9416,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,1.791311972878028,-3.9212926399463246,9.57839658535055,0.7167,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,5.076712981329725,-0.0845206257791555,12.375003816311985,0.0651,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,6.296296534270588,-4.676846194251317,17.188419978769534,0.2604,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-0.04000533404454,-0.12001600213362001,0.0,0.6983,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,0.6430740725373073,-0.14541330595803567,1.6864501157343188,0.1396,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,0.221556356742888,-0.267097231920652,0.786721497696978,0.4184,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,0.33815035018383954,-6.129157914509905,5.665567098799948,0.8597,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-6.958234901593903,-15.055041491045298,-0.895183016625716,0.0014,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-5.435910152835165,-11.689972447290717,-1.406258629853154,0.0004,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-2.150509144383467,-8.702434415591643,1.7182408661323811,0.6744,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-0.9309255914426047,-8.778096389970615,5.158482109196404,0.8674,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,0.6830794065818473,-0.10170109287347663,1.7243131689669209,0.1074,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,0.26156169078742797,-0.2164233219117833,0.8140746833676943,0.3148,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,0.37815568422837914,-6.008082857465139,5.670140379559739,0.8494,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-6.918229567549362,-15.026338578125193,-0.8737229669890918,0.0015,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-5.3959048187906244,-11.647405200784005,-1.3788957459618507,0.0006,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-2.110503810338927,-8.65141490013246,1.7560750822178475,0.6816,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-0.8909202573980646,-8.738363393994703,5.189056488583723,0.8784,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-0.4215177157944192,-1.5718040782921936,0.5843022719240454,0.456,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,-0.3049237223534677,-6.699868518050034,5.083959155562532,0.9529,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,-7.601308974131211,-15.593906686677235,-1.5802502846061985,0.0,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-6.078984225372471,-12.179463896930942,-2.316738606978241,0.0,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-2.793583216920774,-9.143717573246136,0.7346632923358982,0.5219,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-1.5739996639799116,-9.525587941861474,4.800424662274157,0.7118,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,0.11659399344095102,-6.273955208228433,5.411261785420905,0.9238,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,-7.17979125833679,-15.807900532573973,-0.7544770172284403,0.0047,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-5.657466509578054,-12.121106363058477,-1.5164996923665075,0.0005,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-2.372065501126355,-9.170181785001953,1.6134920332375573,0.6646,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-1.1524819481854933,-9.002250869038651,4.942995143718454,0.8092,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-7.296385251777741,-16.926629394258857,1.5464125160679363,0.1106,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-5.774060503019003,-13.85048690542923,1.6385801407219929,0.1303,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-2.4886594945673064,-11.272623688412683,5.348319318081427,0.5632,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-1.269075941626444,-9.170994183176433,6.074687395280764,0.7185,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,1.5223247487587381,-2.3458980935601867,7.644754503744282,0.6913,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,4.807725757210437,0.826534371461854,11.070018276422687,0.0024,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,6.027309310151298,-4.001627998086985,15.886922803890757,0.2339,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,3.2854010084516982,1.8571951543868865,4.717201215133988,0.0,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,4.50498456139256,-4.556919522402446,13.080937019756643,0.3073,15
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,1.219583552940862,-8.237651142136613,10.479289320567151,0.8172,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,1.4486659399864974,0.06828779199389334,3.0508143912391623,0.035,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,1.367291649125213,-0.031116680050192542,2.996893036911546,0.0557,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,0.29708125128221735,-0.9485914652218217,1.7264088603965715,0.6996,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,1.3257551330589434,-0.0700298837927278,2.9515247361232912,0.0644,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,1.389237046504305,-0.03481899226863747,3.123923622225941,0.0591,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,0.91442944709061,-0.2220897035364125,2.4062875745052565,0.1609,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,-0.08297970743126534,-1.370362259008116,1.5305027074449962,0.8459,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,0.8891420567127272,-0.33983024345556034,2.4851838844718714,0.2063,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,1.2530494352398793,-0.9189577378803294,3.386512265884209,0.2466,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,-0.08137429086128467,-0.244122872583854,0.0,0.6983,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,-1.1515846887042802,-1.8351588265775922,-0.5344541286849094,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-0.12291080692755399,-0.4839902075453073,0.2282223070838727,0.4883,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,-0.05942889348219267,-0.4780240287457456,0.35789728454071457,0.7689,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,-0.5342364928958875,-1.5914816910821081,0.09879785676072263,0.2141,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-1.5316456474177627,-2.5741177457784765,-0.7168030168378275,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-0.55952388327377,-1.622812539107911,0.10230721389519105,0.1787,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-0.19561650474661804,-1.9067647457278836,1.3050276176951083,0.8328,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,-1.0702103978429955,-1.7967742940743254,-0.3943534569202474,0.0017,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-0.04153651606626932,-0.36649595930809825,0.27608113762467873,0.7926,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,0.021945397379092003,-0.3639934073280782,0.41002401047677395,0.9167,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,-0.45286220203460276,-1.4707593197548061,0.14006375242014732,0.4593,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-1.450271356556478,-2.4894085643001995,-0.6392770662171745,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-0.47814959241248545,-1.5750239799114627,0.2360805096691115,0.3465,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-0.11424221388533332,-1.8357401028483789,1.3637007667586976,0.9192,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,1.028673881776726,0.26140075703439647,1.8019923124380357,0.0092,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,1.0921557952220873,0.4524480868233997,1.7333683236721897,0.001,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,0.6173481958083926,-0.14592700597759456,1.2944827010652828,0.1025,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-0.3800609587134827,-1.2723252253150865,0.48768182060627024,0.3956,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,0.5920608054305099,-0.20183992639957113,1.3444585062681813,0.1363,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,0.9559681839576621,-0.5732408661001397,2.4014341148873903,0.2084,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,0.0634819134453613,-0.27567006486584295,0.4483969223256692,0.7652,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,-0.41132568596833335,-1.3749747379074355,0.2648492732717865,0.3606,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,-1.4087348404902087,-2.2792501430198384,-0.7164247395267561,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,-0.43661307634621604,-1.433173421850185,0.2825243166025422,0.3234,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-0.07270569781906389,-1.7970264640037326,1.4219296420251817,0.9682,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-0.4748075994136947,-1.344289703417115,0.11506703699343718,0.1861,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-1.4722167539355697,-2.24218339171369,-0.8260231799038263,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-0.5000949897915774,-1.3689660203685967,0.11815764430767244,0.1512,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-0.1361876112644254,-1.6965402204987654,1.303777020036901,0.8686,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-0.9974091545218754,-1.5902789923543268,-0.4533199360148267,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-0.025287390377882676,-0.3496756070468765,0.2975313783865377,0.8754,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,0.33861998814926947,-1.4538353893525942,2.1134519193791914,0.6989,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,0.9721217641439925,0.44681762850466966,1.4903743441590518,0.0,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,1.3360291426711446,-0.20680158437654228,2.8275393137344165,0.0889,15
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,0.3639073785271521,-1.4742534619650414,2.1539152818693554,0.6779,15
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,9.26526276878902,-6.414788587889365,25.746000698605474,0.2606,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,11.074806368357196,-4.778860456835528,27.27114222132304,0.1779,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,23.05762483979291,6.560161477210094,42.4526702351443,0.0014,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,-0.34962116590211484,-19.158269749872005,20.654612576934813,0.9385,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,29.072854215057546,7.064122329101431,51.93314778222774,0.0068,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,17.50954170392663,-5.148012912402361,40.4693987802476,0.1306,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,21.13807520670849,1.7465201684160252,39.87606318928123,0.0342,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,8.497748640771396,-20.37554247236479,36.308478696111855,0.5508,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,1.131645436551106,-17.67771663319952,20.12528254588319,0.9162,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,1.8095435995681772,0.0,5.428630798704532,0.7096,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,13.792362071003891,4.379039453869493,24.22943783271389,0.0026,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-9.614883934691136,-28.161179727318174,9.917457274590674,0.3206,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,19.80759144626852,2.2996368241300806,39.229076616242224,0.0232,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,8.24427893513761,-7.965836626640808,25.681784872589176,0.346,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,11.872812437919471,0.828339835833138,25.346427123547777,0.0282,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,-0.767514128017624,-20.507705974277354,22.158083736359927,0.8973,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-8.133617332237915,-31.985208078382936,14.23953113286179,0.4931,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,11.982818471435714,2.294907008186937,23.01162500355199,0.0114,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-11.424427534259314,-29.702022919953055,8.317594170484167,0.2441,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,17.99804784670034,0.2306481304388218,38.00407941236807,0.0456,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,6.434735335569433,-9.503500996515564,24.27399730326992,0.4761,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,10.063268838351293,-0.7172244083124149,23.62548556551933,0.0756,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,-2.5770577275858013,-21.573514437816925,20.1883227736401,0.7637,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-9.94316093180609,-33.909489930085314,12.992217029464959,0.4071,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-23.407246005695026,-43.17531606001762,-0.9213320656911284,0.0421,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,6.015229375264631,-10.837508379845149,26.544701011694695,0.5608,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,-5.548083135866279,-20.8122256353408,12.499992172008685,0.5048,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-1.9195496330844197,-16.40209700340792,15.409855794601206,0.7721,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,-14.559876199021511,-41.11772534563315,13.99387530585667,0.2951,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-21.925979403241808,-43.69974774272244,1.417916065174356,0.0649,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,29.422475380959657,8.986243054095752,50.37757955737584,0.0041,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,17.859162869828747,-1.071712359939805,39.132159729811846,0.0653,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,21.48769637261061,4.834583527540506,40.28648570498049,0.0086,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,8.84736980667351,-8.850111485255473,26.85104153629819,0.3259,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,1.4812666024532206,-15.519119674357677,17.762643633230763,0.8474,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-11.563312511130912,-20.45318472749607,-3.5295519395233517,0.0005,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-7.934779008349051,-17.85015303513418,2.469515090905629,0.1313,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-20.575105574286145,-44.69997193868269,0.9198637201784298,0.0623,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-27.941208778506436,-48.21078993073065,-8.03493887208647,0.0048,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,MLP,Script,performance_loss_pct,3.628533502781862,-4.719854445552642,12.222001006458044,0.3731,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-9.011793063155233,-34.01506777078228,12.832049195517621,0.4747,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-16.37789626737553,-33.85101068645225,1.1553919699070458,0.0669,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Script,Typological,performance_loss_pct,-12.640326565937094,-32.59413007574636,4.163405327665328,0.1642,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-20.006429770157386,-39.6437415486235,-2.1266805692535784,0.0273,12
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-7.366103204220288,-34.444623435746294,18.44382226001173,0.5971,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-Equal,performance_loss_pct,2.603741141282166,-0.49577055016678645,6.310131847753283,0.1181,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Composite-RRF,performance_loss_pct,3.2626490639460424,-0.02936729833135132,7.009696521996124,0.0519,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Genetic,performance_loss_pct,6.39672739560478,1.5158670105966154,11.657122342044746,0.0077,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Geographic,performance_loss_pct,0.4171650244227152,-6.0784061710417046,6.791849835927138,0.8857,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,LightGBM,performance_loss_pct,25.991215252764494,10.836068207108049,41.66646196803934,0.0002,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,MLP,performance_loss_pct,25.536325363835278,9.808041501368303,41.68812554142139,0.0007,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Script,performance_loss_pct,2.045905049903706,-4.844245049259719,8.14687815263475,0.5265,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Typological,performance_loss_pct,8.419828758469949,-0.27398079467537045,19.90249227532585,0.0599,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Wikipedia size,performance_loss_pct,-0.8801225658020257,-6.779670714436742,4.273286321918461,0.7788,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite-RRF,performance_loss_pct,0.6589079226638764,0.0,1.9767237679916292,0.7096,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Genetic,performance_loss_pct,3.792986254322615,0.9990527520142747,6.346500102458971,0.0087,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Geographic,performance_loss_pct,-2.1865761168594506,-7.677437454285647,2.9764703816402247,0.3968,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,LightGBM,performance_loss_pct,23.387474111482337,7.639032462991994,40.094497318093325,0.0015,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,MLP,performance_loss_pct,22.932584222553118,7.201172546594118,39.80330993959047,0.0027,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Script,performance_loss_pct,-0.5578360913784598,-6.176172389845026,4.085354142660819,0.8819,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Typological,performance_loss_pct,5.816087617187786,-2.7354199742098073,18.032289290287185,0.286,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Wikipedia size,performance_loss_pct,-3.4838637070841916,-9.274143535597961,1.8361934806510514,0.2153,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Genetic,performance_loss_pct,3.1340783316587384,0.45312397449491826,5.699319714771922,0.021,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Geographic,performance_loss_pct,-2.845484039523327,-8.262309363113838,2.436239025607634,0.2886,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,LightGBM,performance_loss_pct,22.72856618881846,7.5078340023521974,38.82484550617793,0.0015,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,MLP,performance_loss_pct,22.273676299889235,7.055361793008855,38.444700890591,0.0027,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Script,performance_loss_pct,-1.2167440140423362,-6.670681021906138,3.2427672270445886,0.6829,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Typological,performance_loss_pct,5.157179694523909,-3.2984396342776425,17.440212416635156,0.3793,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Wikipedia size,performance_loss_pct,-4.142771629748068,-9.579983242115004,0.5196749189483039,0.0872,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Geographic,performance_loss_pct,-5.979562371182066,-11.076705376164526,-0.48760023076503406,0.0325,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,LightGBM,performance_loss_pct,19.594487857159713,4.11282696625713,35.914832964779485,0.0094,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,MLP,performance_loss_pct,19.139597968230493,3.612161743004389,35.712937438339225,0.0127,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Script,performance_loss_pct,-4.350822345701075,-9.099302658029433,-0.3794784506923253,0.0289,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Typological,performance_loss_pct,2.0231013628651704,-6.308708450369298,13.998571492181345,0.7739,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Genetic,Wikipedia size,performance_loss_pct,-7.276849961406808,-12.865297197172891,-1.944043260455135,0.0063,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,LightGBM,performance_loss_pct,25.574050228341786,9.229545027339801,42.602193178363095,0.0017,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,MLP,performance_loss_pct,25.119160339412563,8.826546096539218,41.792802047728784,0.0019,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Script,performance_loss_pct,1.628740025480991,-3.351356662201511,6.092568093959193,0.4927,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Typological,performance_loss_pct,8.002663734047237,0.15239795765292938,20.047088613247336,0.0402,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Geographic,Wikipedia size,performance_loss_pct,-1.297287590224741,-6.8469330687887995,4.052995026152112,0.6463,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,MLP,performance_loss_pct,-0.45488988892921906,-13.774444251062397,12.258490238996751,0.9534,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Script,performance_loss_pct,-23.945310202860792,-39.6562174521592,-9.206722766737903,0.0002,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Typological,performance_loss_pct,-17.571386494294547,-33.54784839236539,-2.9895753080306005,0.0154,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,LightGBM,Wikipedia size,performance_loss_pct,-26.87133781856652,-41.89370130525381,-12.580564204952713,0.0,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Script,performance_loss_pct,-23.490420313931576,-40.795978658381685,-7.185324361729819,0.0032,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Typological,performance_loss_pct,-17.116496605365324,-37.451208620830414,3.8574563513946476,0.1078,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,MLP,Wikipedia size,performance_loss_pct,-26.41644792963731,-43.03405759259048,-10.560980649125263,0.001,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Script,Typological,performance_loss_pct,6.373923708566245,-2.654630559871355,18.64434801225784,0.2354,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Script,Wikipedia size,performance_loss_pct,-2.9260276157057317,-7.508080440304445,1.764479297533656,0.223,12
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Wikipedia size,performance_loss_pct,-9.299951324271975,-19.091388828811965,-2.0648169141684796,0.0047,12

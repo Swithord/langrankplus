@@ -77,12 +77,6 @@ python post-analysis/run_revision_analysis.py \
   --min-ctc-targets "$MIN_CTC_TARGETS" \
   "${EXTRA_FLAGS[@]}"
 
-python post-analysis/write_markdown_tables.py \
-  --tables-dir "$OUT_DIR/tables" \
-  --outdir "$OUT_DIR/markdown" \
-  --max-rows "$MARKDOWN_MAX_ROWS" \
-  --digits "$MARKDOWN_DIGITS"
-
 echo "Finished post-analysis."
 echo "CSV tables: $OUT_DIR/tables"
 echo "Markdown tables: $OUT_DIR/markdown"
