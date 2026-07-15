@@ -19,7 +19,7 @@ VENV_PATH="${VENV_PATH:-venv}"
 
 CSVS="${CSVS:-data/sib200.csv}"
 DATASET_NAMES="${DATASET_NAMES:-}"
-FEATURES="${FEATURES:-new_gen new_typ new_geo script}"
+FEATURES="${FEATURES:-new_gen new_typ new_geo script distals_asjp distals_wiki_size}"
 PERFORMANCE_COLS="${PERFORMANCE_COLS:-accuracy f1_score}"
 
 TARGET_COL="${TARGET_COL:-task_lang}"

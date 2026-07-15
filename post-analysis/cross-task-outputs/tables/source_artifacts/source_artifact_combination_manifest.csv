@@ -1,0 +1,7 @@
+source_file,combined_file,status,n_rows
+summary_by_heldout_task.csv,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/cross-task-outputs/tables/source_artifacts/source_summary_by_heldout_task_combined.csv,written,198
+summary_macro_task.csv,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/cross-task-outputs/tables/source_artifacts/source_summary_macro_task_combined.csv,written,22
+summary_pooled_query.csv,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/cross-task-outputs/tables/source_artifacts/source_summary_pooled_query_combined.csv,written,22
+pairwise_macro_task.csv,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/cross-task-outputs/tables/source_artifacts/source_pairwise_macro_task_combined.csv,written,110
+pairwise_pooled_query.csv,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/cross-task-outputs/tables/source_artifacts/source_pairwise_pooled_query_combined.csv,written,110
+transfer_type_loss.csv,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/cross-task-outputs/tables/source_artifacts/source_transfer_type_loss_combined.csv,written,22

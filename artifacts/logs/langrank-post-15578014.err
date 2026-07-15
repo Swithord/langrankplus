@@ -1,4 +1,0 @@
-usage: write_markdown_tables.py [-h] [--outdir OUTDIR]
-                                [--markdown-dir MARKDOWN_DIR]
-                                [--digits DIGITS]
-write_markdown_tables.py: error: unrecognized arguments: --tables-dir post-analysis/outputs/tables --max-rows 0

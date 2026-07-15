@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Callable, Optional, Sequence
+import math
 
 import numpy as np
 import pandas as pd
@@ -26,11 +27,33 @@ from .resource_level_langs import RESOURCE_LEVELS, resource_level
 from .validation import validate_dataset
 
 
+VALID_CNOTC_GROUPINGS = {"none", "resource_level"}
+VALID_CNOTC_UNKNOWN_POLICIES = {"error", "separate"}
+
+
 def _percent_tag(value: float) -> str:
     percent = 100.0 * float(value)
     if percent.is_integer():
         return str(int(percent))
     return str(percent).replace(".", "p").replace("-", "m")
+
+
+def _minimum_finite_calibration_size(alpha: float) -> int:
+    """Smallest n for which the standard split-conformal quantile is finite.
+
+    The quantile index is ceil((n + 1) * (1 - alpha)). It is no larger
+    than n exactly when n >= (1 - alpha) / alpha.
+    """
+    if not 0 < alpha < 1:
+        raise ValueError("alpha must be in (0, 1)")
+    return int(math.ceil((1.0 - alpha) / alpha))
+
+
+def _standard_error(values: pd.Series) -> float:
+    values = pd.to_numeric(values, errors="coerce").dropna().to_numpy(dtype=float)
+    if values.size <= 1:
+        return float("nan")
+    return float(np.std(values, ddof=1) / math.sqrt(values.size))
 
 
 @dataclass
@@ -87,6 +110,8 @@ class TransferEvaluator:
                  cnotc_alpha: float = 0.1,
                  cnotc_epsilon: float = 0.05,
                  cnotc_cal_size: float = 0.2,
+                 cnotc_grouping: str = "none",
+                 cnotc_unknown_policy: str = "error",
                  budget_ks: Sequence[int] = (10,),
                  include_ir_metrics: bool = False,
                  ir_cutoffs: Sequence[int] = (1, 3, 5, 10)):
@@ -100,10 +125,25 @@ class TransferEvaluator:
         self.random_state = random_state
         self.verbose = verbose
 
+        if cnotc_grouping not in VALID_CNOTC_GROUPINGS:
+            raise ValueError(
+                f"Unknown CNOTC grouping {cnotc_grouping!r}; "
+                f"expected one of {sorted(VALID_CNOTC_GROUPINGS)}."
+            )
+        if cnotc_unknown_policy not in VALID_CNOTC_UNKNOWN_POLICIES:
+            raise ValueError(
+                f"Unknown CNOTC unknown policy {cnotc_unknown_policy!r}; "
+                f"expected one of {sorted(VALID_CNOTC_UNKNOWN_POLICIES)}."
+            )
+        if not 0 < cnotc_cal_size < 1:
+            raise ValueError("cnotc_cal_size must be in (0, 1)")
+
         self.include_cnotc = include_cnotc
         self.cnotc_alpha = cnotc_alpha
         self.cnotc_epsilon = cnotc_epsilon
         self.cnotc_cal_size = cnotc_cal_size
+        self.cnotc_grouping = cnotc_grouping
+        self.cnotc_unknown_policy = cnotc_unknown_policy
         self.budget_ks = tuple(int(x) for x in budget_ks)
 
         self.include_ir_metrics = include_ir_metrics
@@ -145,6 +185,29 @@ class TransferEvaluator:
             query_id_col="_query_id",
         )
 
+        out["_target_resource_level"] = out[self.target_col].map(resource_level)
+
+        if (
+            self.include_cnotc
+            and self.cnotc_grouping == "resource_level"
+            and self.cnotc_unknown_policy == "error"
+        ):
+            unknown_targets = sorted(
+                out.loc[
+                    out["_target_resource_level"] == "unknown",
+                    self.target_col,
+                ].astype(str).unique().tolist()
+            )
+            if unknown_targets:
+                preview = ", ".join(unknown_targets[:20])
+                suffix = "" if len(unknown_targets) <= 20 else ", ..."
+                raise ValueError(
+                    "Mondrian CTC requires every target to have a resource-level "
+                    f"group. Unclassified targets: {preview}{suffix}. Either update "
+                    "src/resource_level_langs.py or pass "
+                    "--cnotc_unknown_policy separate."
+                )
+
         return out
 
     def _split_train_val(self,
@@ -173,8 +236,17 @@ class TransferEvaluator:
 
         return train_data, val_data
 
-    def _split_fitting_cnotc(self,
+    def _split_fitting_cnotc(
+                             self,
                              train_val_data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+        """Split non-test queries into ranker-fitting and CTC-calibration sets.
+
+        With resource-level Mondrian CTC, the split is performed separately
+        within HRL, MRL and LRL targets. This preserves calibration examples
+        from each available group while keeping every calibration target out of
+        ranker fitting. Groups containing only one non-test query remain in the
+        fitting set because they cannot be split without emptying one side.
+        """
         groups = train_val_data["_query_id"].to_numpy()
         unique_groups = np.unique(groups)
 
@@ -183,20 +255,105 @@ class TransferEvaluator:
                 "CNOTC evaluation requires at least three non-held-out queries."
             )
 
-        splitter = GroupShuffleSplit(
-            n_splits=1,
-            test_size=self.cnotc_cal_size,
-            random_state=self.random_state,
+        if self.cnotc_grouping == "none":
+            splitter = GroupShuffleSplit(
+                n_splits=1,
+                test_size=self.cnotc_cal_size,
+                random_state=self.random_state,
+            )
+            fitting_idx, calibration_idx = next(
+                splitter.split(train_val_data, groups=groups)
+            )
+            fitting_data = train_val_data.iloc[fitting_idx].copy()
+            calibration_data = train_val_data.iloc[calibration_idx].copy()
+        else:
+            query_groups = (
+                train_val_data[["_query_id", "_target_resource_level"]]
+                .drop_duplicates()
+                .reset_index(drop=True)
+            )
+
+            group_counts = query_groups.groupby("_query_id")[
+                "_target_resource_level"
+            ].nunique()
+            if bool((group_counts > 1).any()):
+                raise ValueError(
+                    "A query was assigned to more than one resource-level group."
+                )
+
+            rng = np.random.RandomState(self.random_state)
+            calibration_ids: list[str] = []
+
+            levels = list(RESOURCE_LEVELS)
+            if self.cnotc_unknown_policy == "separate":
+                levels.append("unknown")
+
+            for level in levels:
+                ids = np.asarray(
+                    sorted(
+                        query_groups.loc[
+                            query_groups["_target_resource_level"] == level,
+                            "_query_id",
+                        ].astype(str).tolist()
+                    ),
+                    dtype=object,
+                )
+                n_group = int(ids.size)
+
+                if n_group < 2:
+                    continue
+
+                n_calibration = int(math.ceil(self.cnotc_cal_size * n_group))
+                n_calibration = max(1, min(n_calibration, n_group - 1))
+                chosen = rng.permutation(ids)[:n_calibration]
+                calibration_ids.extend(chosen.tolist())
+
+            calibration_mask = train_val_data["_query_id"].astype(str).isin(
+                set(calibration_ids)
+            )
+            fitting_data = train_val_data.loc[~calibration_mask].copy()
+            calibration_data = train_val_data.loc[calibration_mask].copy()
+
+        if fitting_data["_query_id"].nunique() == 0:
+            raise ValueError("CNOTC split produced an empty fitting set.")
+
+        if self.cnotc_grouping == "none" and calibration_data["_query_id"].nunique() == 0:
+            raise ValueError("CNOTC split produced an empty calibration set.")
+
+        overlap = set(fitting_data["_query_id"].unique()) & set(
+            calibration_data["_query_id"].unique()
         )
-        fitting_idx, calibration_idx = next(splitter.split(train_val_data, groups=groups))
-
-        fitting_data = train_val_data.iloc[fitting_idx]
-        calibration_data = train_val_data.iloc[calibration_idx]
-
-        if fitting_data["_query_id"].nunique() == 0 or calibration_data["_query_id"].nunique() == 0:
-            raise ValueError("CNOTC split produced an empty fitting or calibration set.")
+        if overlap:
+            raise RuntimeError(
+                "CNOTC fitting/calibration leakage detected for queries: "
+                + ", ".join(sorted(str(x) for x in overlap))
+            )
 
         return fitting_data, calibration_data
+
+    def _cnotc_calibration_subset(
+            self,
+            calibration_data: pd.DataFrame,
+            test_data: pd.DataFrame) -> tuple[str, pd.DataFrame]:
+        if self.cnotc_grouping == "none":
+            return "all", calibration_data
+
+        test_groups = test_data["_target_resource_level"].astype(str).unique()
+        if test_groups.size != 1:
+            raise ValueError(
+                "Each held-out query must belong to exactly one Mondrian group."
+            )
+
+        test_group = str(test_groups[0])
+        if test_group == "unknown" and self.cnotc_unknown_policy == "error":
+            raise ValueError(
+                "The held-out target has unknown resource level under Mondrian CTC."
+            )
+
+        subset = calibration_data.loc[
+            calibration_data["_target_resource_level"].astype(str) == test_group
+        ].copy()
+        return test_group, subset
 
     def _fit_fold_ranker(self,
                          ranker: BaseRanker,
@@ -224,18 +381,24 @@ class TransferEvaluator:
         )
         return ranker
 
-    def _evaluate_cnotc_and_budgets(self,
+    def _evaluate_cnotc_and_budgets(
+                                    self,
                                     *,
                                     fold_ranker: BaseRanker,
                                     calibration_data: pd.DataFrame,
                                     test_data: pd.DataFrame,
                                     feature_cols: list[str],
-                                    y_pred: np.ndarray) -> tuple[dict[str, float], dict[str, float]]:
-        per_fold = {}
-        summary_values = {}
+                                    y_pred: np.ndarray) -> tuple[dict[str, object], dict[str, float]]:
+        per_fold: dict[str, object] = {}
+        summary_values: dict[str, float] = {}
+
+        cnotc_group, group_calibration_data = self._cnotc_calibration_subset(
+            calibration_data,
+            test_data,
+        )
 
         calibration_scores = calibration_scores_from_queries(
-            calibration_data,
+            group_calibration_data,
             ranker=fold_ranker,
             feature_cols=feature_cols,
             performance_col=self.performance_col,
@@ -244,12 +407,21 @@ class TransferEvaluator:
             near_best_rule="relative",
             near_best_epsilon=self.cnotc_epsilon,
             near_best_std_multiplier=1.0,
-        )
+        ) if not group_calibration_data.empty else []
 
-        threshold = conformal_quantile(
-            calibration_scores,
-            alpha=self.cnotc_alpha,
-        )
+        n_calibration = len(calibration_scores)
+        min_finite_n = _minimum_finite_calibration_size(self.cnotc_alpha)
+
+        # No same-group calibration target implies the only distribution-free
+        # valid deterministic action is the full source pool. The existing
+        # conformal_source_set implementation maps +inf to that full pool.
+        if n_calibration == 0:
+            threshold = float("inf")
+        else:
+            threshold = conformal_quantile(
+                calibration_scores,
+                alpha=self.cnotc_alpha,
+            )
 
         test_perf = test_data[self.performance_col].to_numpy(dtype=float)
         test_sources = test_data[self.source_col].to_numpy()
@@ -266,12 +438,36 @@ class TransferEvaluator:
             max_set_size=None,
         )
 
+        if calibration_data.empty:
+            calibration_group_counts = ""
+        else:
+            counts = (
+                calibration_data[["_query_id", "_target_resource_level"]]
+                .drop_duplicates()
+                .groupby("_target_resource_level")["_query_id"]
+                .nunique()
+                .to_dict()
+            )
+            calibration_group_counts = ",".join(
+                f"{level}:{int(counts.get(level, 0))}"
+                for level in (*RESOURCE_LEVELS, "unknown")
+                if int(counts.get(level, 0)) > 0
+            )
+
         per_fold.update({
             "cnotc_alpha": self.cnotc_alpha,
             "cnotc_epsilon": self.cnotc_epsilon,
+            "cnotc_grouping": self.cnotc_grouping,
+            "cnotc_group": cnotc_group,
+            "cnotc_calibration_size": n_calibration,
+            "cnotc_calibration_group_counts": calibration_group_counts,
+            "cnotc_min_finite_calibration_size": min_finite_n,
+            "cnotc_finite_quantile_possible": float(n_calibration >= min_finite_n),
+            "cnotc_threshold_is_infinite": float(np.isinf(threshold)),
             "cnotc_threshold": cnotc.threshold,
             "cnotc_trial_complexity": cnotc.effective_k,
             "cnotc_set_size": cnotc.set_size,
+            "cnotc_test_pool_size": int(test_sources.shape[0]),
             "cnotc_pool_fraction": cnotc.set_size_fraction,
             "cnotc_near_oracle_coverage": cnotc.contains_near_best_source,
             "cnotc_exact_best_coverage": cnotc.contains_best_source,
@@ -281,11 +477,14 @@ class TransferEvaluator:
         })
 
         summary_values.update({
-            "cnotc_trial_complexity": cnotc.set_size,
+            "cnotc_trial_complexity": float(cnotc.set_size),
             "cnotc_pool_fraction": cnotc.set_size_fraction,
             "cnotc_near_oracle_coverage": cnotc.contains_near_best_source,
             "cnotc_exact_best_coverage": cnotc.contains_best_source,
             "cnotc_best_in_set_performance_loss": cnotc.best_in_set_performance_loss,
+            "cnotc_calibration_size": float(n_calibration),
+            "cnotc_finite_quantile_possible": float(n_calibration >= min_finite_n),
+            "cnotc_threshold_is_infinite": float(np.isinf(threshold)),
         })
 
         epsilon_tag = _percent_tag(self.cnotc_epsilon)
@@ -319,7 +518,7 @@ class TransferEvaluator:
             })
 
             summary_values.update({
-                f"{prefix}_size": budget.set_size,
+                f"{prefix}_size": float(budget.set_size),
                 f"{prefix}_pool_fraction": budget.set_size_fraction,
                 f"{prefix}_near_oracle_coverage": budget.contains_near_best_source,
                 f"{prefix}_exact_best_coverage": budget.contains_best_source,
@@ -422,7 +621,7 @@ class TransferEvaluator:
                 "method": method_name or ranker.__class__.__name__,
                 "query_id": test_data["_query_id"].iloc[0],
                 "target_lang": target_lang_val,
-                "target_resource_level": resource_level(target_lang_val),
+                "target_resource_level": test_data["_target_resource_level"].iloc[0],
                 "predicted_best_source": predicted_source_val,
                 "predicted_source_resource_level": resource_level(predicted_source_val),
                 "actual_best_source": actual_best_source_val,
@@ -545,6 +744,113 @@ def results_to_per_fold(results: list[EvaluationResult]) -> pd.DataFrame:
         return pd.DataFrame()
     return pd.concat(frames, ignore_index=True)
 
+
+
+def results_to_mondrian_ctc(results: list[EvaluationResult]) -> pd.DataFrame:
+    """Summarise resource-level Mondrian CTC and hit rate.
+
+    One row is returned for each method and target resource level. CTC is the
+    mean realised top-k set size across held-out targets in that group. Hit-rate
+    standard errors are the usual empirical standard errors across held-out
+    target queries, matching the paper's ``mean +/- SE`` presentation.
+    """
+    rows: list[dict[str, object]] = []
+
+    required = {
+        "target_resource_level",
+        "cnotc_trial_complexity",
+        "cnotc_near_oracle_coverage",
+        "cnotc_exact_best_coverage",
+        "cnotc_pool_fraction",
+        "cnotc_calibration_size",
+        "cnotc_threshold_is_infinite",
+        "cnotc_finite_quantile_possible",
+    }
+
+    for result in results:
+        df = result.per_fold.copy()
+        if not required.issubset(df.columns):
+            continue
+
+        for level in RESOURCE_LEVELS:
+            group_df = df.loc[df["target_resource_level"] == level].copy()
+            if group_df.empty:
+                continue
+
+            trial_complexity = pd.to_numeric(
+                group_df["cnotc_trial_complexity"], errors="coerce"
+            )
+            near_hits = pd.to_numeric(
+                group_df["cnotc_near_oracle_coverage"], errors="coerce"
+            )
+            exact_hits = pd.to_numeric(
+                group_df["cnotc_exact_best_coverage"], errors="coerce"
+            )
+            calibration_sizes = pd.to_numeric(
+                group_df["cnotc_calibration_size"], errors="coerce"
+            )
+            pool_sizes = pd.to_numeric(
+                group_df.get("cnotc_test_pool_size"), errors="coerce"
+            )
+            pool_fractions = pd.to_numeric(
+                group_df["cnotc_pool_fraction"], errors="coerce"
+            )
+            infinite = pd.to_numeric(
+                group_df["cnotc_threshold_is_infinite"], errors="coerce"
+            )
+            finite_possible = pd.to_numeric(
+                group_df["cnotc_finite_quantile_possible"], errors="coerce"
+            )
+
+            best_loss_col = "cnotc_best_in_set_performance_loss"
+            if best_loss_col in group_df.columns:
+                best_loss = pd.to_numeric(
+                    group_df[best_loss_col], errors="coerce"
+                )
+            else:
+                best_loss = pd.Series(dtype=float)
+
+            rows.append({
+                "method": result.method_name,
+                "resource_level": level,
+                "n_folds": int(group_df.shape[0]),
+                "mean_trial_complexity": float(trial_complexity.mean()),
+                "median_trial_complexity": float(trial_complexity.median()),
+                "min_trial_complexity": float(trial_complexity.min()),
+                "max_trial_complexity": float(trial_complexity.max()),
+                "mean_test_pool_size": float(pool_sizes.mean()),
+                "mean_pool_fraction_pct": float(pool_fractions.mean() * 100.0),
+                "near_oracle_hit_rate_pct": float(near_hits.mean() * 100.0),
+                "near_oracle_hit_rate_se_pct": float(_standard_error(near_hits) * 100.0),
+                "exact_best_hit_rate_pct": float(exact_hits.mean() * 100.0),
+                "exact_best_hit_rate_se_pct": float(_standard_error(exact_hits) * 100.0),
+                "mean_calibration_size": float(calibration_sizes.mean()),
+                "min_calibration_size": float(calibration_sizes.min()),
+                "max_calibration_size": float(calibration_sizes.max()),
+                "minimum_finite_calibration_size": int(
+                    group_df["cnotc_min_finite_calibration_size"].iloc[0]
+                ) if "cnotc_min_finite_calibration_size" in group_df.columns else float("nan"),
+                "finite_quantile_possible_rate_pct": float(
+                    finite_possible.mean() * 100.0
+                ),
+                "infinite_threshold_rate_pct": float(infinite.mean() * 100.0),
+                "mean_best_in_set_performance_loss_pct": float(
+                    best_loss.mean() * 100.0
+                ) if not best_loss.empty else float("nan"),
+                "alpha": float(group_df["cnotc_alpha"].iloc[0]),
+                "epsilon": float(group_df["cnotc_epsilon"].iloc[0]),
+            })
+
+    if not rows:
+        return pd.DataFrame()
+
+    out = pd.DataFrame(rows)
+    out["resource_level"] = pd.Categorical(
+        out["resource_level"],
+        categories=list(RESOURCE_LEVELS),
+        ordered=True,
+    )
+    return out.sort_values(["method", "resource_level"]).reset_index(drop=True)
 
 def results_to_transfer_type_loss(results: list[EvaluationResult]) -> pd.DataFrame:
     """Per-method mean performance loss broken down by transfer type.

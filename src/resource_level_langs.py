@@ -14,16 +14,46 @@ low_resource_languages_URIELPlus = ['ghot1243', 'alum1246', 'arii1243', 'amal124
 
 RESOURCE_LEVELS = ("hrl", "mrl", "lrl")
 
-_HRL_SET = frozenset(high_resource_languages_URIELPlus)
-_MRL_SET = frozenset(medium_resource_languages_URIELPlus)
-_LRL_SET = frozenset(low_resource_languages_URIELPlus)
+_HRL_SET = frozenset(
+    str(code).strip().lower()
+    for code in (
+        list(high_resource_languages_URIEL)
+        + list(high_resource_languages_URIELPlus)
+    )
+)
+
+_MRL_SET = frozenset(
+    str(code).strip().lower()
+    for code in (
+        list(medium_resource_languages_URIEL)
+        + list(medium_resource_languages_URIELPlus)
+    )
+)
+
+_LRL_SET = frozenset(
+    str(code).strip().lower()
+    for code in (
+        list(low_resource_languages_URIEL)
+        + list(low_resource_languages_URIELPlus)
+    )
+)
 
 
-def resource_level(glottocode):
-    if glottocode in _HRL_SET:
+def resource_level(language_code):
+    """Return the resource level for an ISO 639-3 code or Glottocode."""
+    if language_code is None:
+        return "unknown"
+
+    code = str(language_code).strip().lower()
+
+    if not code or code == "nan":
+        return "unknown"
+
+    if code in _HRL_SET:
         return "hrl"
-    if glottocode in _MRL_SET:
+    if code in _MRL_SET:
         return "mrl"
-    if glottocode in _LRL_SET:
+    if code in _LRL_SET:
         return "lrl"
+
     return "unknown"

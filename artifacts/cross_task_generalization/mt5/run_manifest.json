@@ -1,0 +1,192 @@
+{
+  "csv": [
+    "data/masakhaner_mt5.csv",
+    "data/opus100_mt5.csv",
+    "data/sib200_mt5.csv",
+    "data/taxi1500_mt5.csv",
+    "data/tydiqa_mt5.csv",
+    "data/ud_pos_mt5.csv",
+    "data/wikiann_mt5.csv",
+    "data/xnli_mt5.csv",
+    "data/xquad_mt5.csv"
+  ],
+  "dataset_names": [
+    "masakhaner",
+    "opus100",
+    "sib200",
+    "taxi1500",
+    "tydiqa",
+    "ud_pos",
+    "wikiann",
+    "xnli",
+    "xquad"
+  ],
+  "features": [
+    "new_gen",
+    "new_typ",
+    "new_geo",
+    "script",
+    "distals_asjp",
+    "distals_wiki_size"
+  ],
+  "heldout_tasks": [
+    "masakhaner",
+    "opus100",
+    "sib200",
+    "taxi1500",
+    "tydiqa",
+    "ud_pos",
+    "wikiann",
+    "xnli",
+    "xquad"
+  ],
+  "k": 3,
+  "model_name": "mt5",
+  "normalizer": "minmax",
+  "performance_cols": [
+    "f1_score",
+    "bleu",
+    "f1_score",
+    "f1_score",
+    "f1_score",
+    "f1_score",
+    "f1_score",
+    "f1_score",
+    "f1_score"
+  ],
+  "random_state": 42,
+  "self_transfer_allowed": false,
+  "self_transfer_filter_stats": {
+    "masakhaner": {
+      "affected_targets": 19,
+      "original_rows": 361,
+      "remaining_rows": 342,
+      "remaining_targets": 19,
+      "removed_self_transfer_rows": 19
+    },
+    "opus100": {
+      "affected_targets": 38,
+      "original_rows": 3306,
+      "remaining_rows": 3268,
+      "remaining_targets": 87,
+      "removed_self_transfer_rows": 38
+    },
+    "sib200": {
+      "affected_targets": 176,
+      "original_rows": 32560,
+      "remaining_rows": 32384,
+      "remaining_targets": 185,
+      "removed_self_transfer_rows": 176
+    },
+    "taxi1500": {
+      "affected_targets": 32,
+      "original_rows": 24384,
+      "remaining_rows": 24352,
+      "remaining_targets": 762,
+      "removed_self_transfer_rows": 32
+    },
+    "tydiqa": {
+      "affected_targets": 9,
+      "original_rows": 81,
+      "remaining_rows": 72,
+      "remaining_targets": 9,
+      "removed_self_transfer_rows": 9
+    },
+    "ud_pos": {
+      "affected_targets": 73,
+      "original_rows": 10731,
+      "remaining_rows": 10658,
+      "remaining_targets": 147,
+      "removed_self_transfer_rows": 73
+    },
+    "wikiann": {
+      "affected_targets": 55,
+      "original_rows": 7920,
+      "remaining_rows": 7865,
+      "remaining_targets": 144,
+      "removed_self_transfer_rows": 55
+    },
+    "xnli": {
+      "affected_targets": 15,
+      "original_rows": 225,
+      "remaining_rows": 210,
+      "remaining_targets": 15,
+      "removed_self_transfer_rows": 15
+    },
+    "xquad": {
+      "affected_targets": 12,
+      "original_rows": 144,
+      "remaining_rows": 132,
+      "remaining_targets": 12,
+      "removed_self_transfer_rows": 12
+    }
+  },
+  "task_counts": {
+    "masakhaner": {
+      "performance_col": "f1_score",
+      "queries": 19,
+      "rows": 342,
+      "sources": 19,
+      "targets": 19
+    },
+    "opus100": {
+      "performance_col": "bleu",
+      "queries": 87,
+      "rows": 3268,
+      "sources": 38,
+      "targets": 87
+    },
+    "sib200": {
+      "performance_col": "f1_score",
+      "queries": 185,
+      "rows": 32384,
+      "sources": 176,
+      "targets": 185
+    },
+    "taxi1500": {
+      "performance_col": "f1_score",
+      "queries": 762,
+      "rows": 24352,
+      "sources": 32,
+      "targets": 762
+    },
+    "tydiqa": {
+      "performance_col": "f1_score",
+      "queries": 9,
+      "rows": 72,
+      "sources": 9,
+      "targets": 9
+    },
+    "ud_pos": {
+      "performance_col": "f1_score",
+      "queries": 147,
+      "rows": 10658,
+      "sources": 73,
+      "targets": 147
+    },
+    "wikiann": {
+      "performance_col": "f1_score",
+      "queries": 144,
+      "rows": 7865,
+      "sources": 55,
+      "targets": 144
+    },
+    "xnli": {
+      "performance_col": "f1_score",
+      "queries": 15,
+      "rows": 210,
+      "sources": 15,
+      "targets": 15
+    },
+    "xquad": {
+      "performance_col": "f1_score",
+      "queries": 12,
+      "rows": 132,
+      "sources": 12,
+      "targets": 12
+    }
+  },
+  "top_k_relevance": 10,
+  "val_size": 0.2,
+  "validation_unit": "task"
+}

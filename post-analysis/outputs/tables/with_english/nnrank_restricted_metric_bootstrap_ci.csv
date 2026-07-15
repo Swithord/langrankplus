@@ -145,6 +145,8 @@ tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Wikipedia size,Individual,perfor
 tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,Wikipedia size,Individual,raw_oracle_gap_points,Raw gap,10.797152431030213,2.77362655337442,20.748021361990137,8
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Individual,performance_loss_pct,PL (%),24.71425376299745,17.762587927669703,32.07840616495908,64
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,ASJP,Individual,raw_oracle_gap_points,Raw gap,9.955103688547162,6.524526473840342,13.750216061862622,64
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Always English,English,performance_loss_pct,PL (%),27.38004178123109,20.79827270689913,34.22417132612998,64
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Always English,English,raw_oracle_gap_points,Raw gap,11.012773338173094,8.053607948697461,14.279909369488099,64
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite,performance_loss_pct,PL (%),26.496316797947223,18.582557024860815,34.90632073415467,64
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-Equal,Composite,raw_oracle_gap_points,Raw gap,9.619535040303395,6.316532021058052,13.319347506971502,64
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Composite-RRF,Composite,performance_loss_pct,PL (%),27.0243980692319,19.542338407245264,34.93104528949494,64
@@ -165,8 +167,6 @@ ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Individual,performan
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Typological,Individual,raw_oracle_gap_points,Raw gap,8.469135513545247,5.926446181737609,11.3651458856517,64
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Wikipedia size,Individual,performance_loss_pct,PL (%),46.29312889973574,38.53458594708838,54.26235150082475,64
 ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,f1_score,F1/LAS,Wikipedia size,Individual,raw_oracle_gap_points,Raw gap,21.853603477734048,17.202721084420272,26.854329799729793,64
-ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,las,las,Always English,English,performance_loss_pct,PL (%),27.38004178123109,20.79827270689913,34.22417132612998,64
-ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,las,las,Always English,English,raw_oracle_gap_points,Raw gap,11.012773338173094,8.053607948697461,14.279909369488099,64
 ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Individual,performance_loss_pct,PL (%),29.25630069466546,23.64021749476507,35.12995969588276,64
 ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,ASJP,Individual,raw_oracle_gap_points,Raw gap,9.076866212148715,7.144169774714559,11.112018872036906,64
 ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,Always English,English,performance_loss_pct,PL (%),28.51207616387871,24.30270260661166,32.926629737870975,64

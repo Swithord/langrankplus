@@ -8,6 +8,7 @@ from src.data import load_transfer_data, normalize_query_features
 from src.evaluation import (
     TransferEvaluator,
     pairwise_comparisons,
+    results_to_mondrian_ctc,
     results_to_per_fold,
     results_to_summary,
     results_to_transfer_type_loss,
@@ -76,6 +77,24 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cnotc_alpha", type=float, default=0.1)
     parser.add_argument("--cnotc_epsilon", type=float, default=0.05)
     parser.add_argument("--cnotc_cal_size", type=float, default=0.2)
+    parser.add_argument(
+        "--cnotc_grouping",
+        choices=["none", "resource_level"],
+        default="none",
+        help=(
+            "Use one global CTC quantile ('none') or Mondrian quantiles "
+            "conditioned on target-language resource level ('resource_level')."
+        ),
+    )
+    parser.add_argument(
+        "--cnotc_unknown_policy",
+        choices=["error", "separate"],
+        default="error",
+        help=(
+            "For resource-level Mondrian CTC, either reject unclassified "
+            "targets or treat them as a separate Mondrian group."
+        ),
+    )
     parser.add_argument("--budget_ks", nargs="+", type=int, default=[10])
 
     parser.add_argument("--include_ir_metrics", action="store_true")
@@ -206,6 +225,8 @@ def main() -> None:
         cnotc_alpha=args.cnotc_alpha,
         cnotc_epsilon=args.cnotc_epsilon,
         cnotc_cal_size=args.cnotc_cal_size,
+        cnotc_grouping=args.cnotc_grouping,
+        cnotc_unknown_policy=args.cnotc_unknown_policy,
         budget_ks=args.budget_ks,
         include_ir_metrics=args.include_ir_metrics,
         ir_cutoffs=args.ir_cutoffs,
@@ -238,16 +259,20 @@ def main() -> None:
     per_fold = results_to_per_fold(results)
     pairwise = pairwise_comparisons(results)
     transfer_type_loss = results_to_transfer_type_loss(results)
+    mondrian_ctc = results_to_mondrian_ctc(results)
 
     summary_path = outdir / f"summary_{args.performance_col}.csv"
     per_fold_path = outdir / f"per_fold_{args.performance_col}.csv"
     pairwise_path = outdir / f"pairwise_{args.performance_col}.csv"
     transfer_type_loss_path = outdir / f"transfer_type_loss_{args.performance_col}.csv"
+    mondrian_ctc_path = outdir / f"mondrian_ctc_{args.performance_col}.csv"
 
     summary.to_csv(summary_path, index=False)
     per_fold.to_csv(per_fold_path, index=False)
     pairwise.to_csv(pairwise_path, index=False)
     transfer_type_loss.to_csv(transfer_type_loss_path, index=False)
+    if not mondrian_ctc.empty:
+        mondrian_ctc.to_csv(mondrian_ctc_path, index=False)
 
     print("\nSummary")
     print(summary.to_string(index=False))
@@ -255,6 +280,8 @@ def main() -> None:
     print(f"Wrote {per_fold_path}")
     print(f"Wrote {pairwise_path}")
     print(f"Wrote {transfer_type_loss_path}")
+    if not mondrian_ctc.empty:
+        print(f"Wrote {mondrian_ctc_path}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,152 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{1.05}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l*{12}{c}}
+\toprule
+Method
+& \multicolumn{4}{c}{SIB-200}
+& \multicolumn{4}{c}{Taxi1500}
+& \multicolumn{4}{c}{UD-POS} \\
+\cmidrule(lr){2-5}
+\cmidrule(lr){6-9}
+\cmidrule(lr){10-13}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\cmidrule(lr){8-9}
+\cmidrule(lr){10-11}
+\cmidrule(lr){12-13}
+& CTC & HR & CTC & HR & CTC & HR & CTC & HR & CTC & HR & CTC & HR \\
+\midrule
+\multicolumn{13}{l}{\textit{Trained rankers}} \\
+LightGBM & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+MLP & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+\midrule
+\multicolumn{13}{l}{\textit{Composite distances}} \\
+Comp-Eq & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Comp-RRF & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+\midrule
+\multicolumn{13}{l}{\textit{Individual distances}} \\
+Genetic & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Typological & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Geographic & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Script & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+ASJP & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Wiki-size & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Resource-level Mondrian conformal trial complexity for HRL targets. CTC is the mean calibrated shortlist size and HR is the near-oracle hit rate reported as mean $\pm$ one standard error. SIB-200: $n=5$; Taxi1500: $n=6$; UD-POS: $n=6$. Lower CTC is better. A dagger marks a setting in which at least one held-out fold had an infinite conformal quantile, so the valid shortlist expanded to the full candidate-source pool.}
+\label{tab:mondrian-ctc-hrl}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{1.05}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l*{12}{c}}
+\toprule
+Method
+& \multicolumn{4}{c}{SIB-200}
+& \multicolumn{4}{c}{Taxi1500}
+& \multicolumn{4}{c}{UD-POS} \\
+\cmidrule(lr){2-5}
+\cmidrule(lr){6-9}
+\cmidrule(lr){10-13}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\cmidrule(lr){8-9}
+\cmidrule(lr){10-11}
+\cmidrule(lr){12-13}
+& CTC & HR & CTC & HR & CTC & HR & CTC & HR & CTC & HR & CTC & HR \\
+\midrule
+\multicolumn{13}{l}{\textit{Trained rankers}} \\
+LightGBM & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+MLP & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+\midrule
+\multicolumn{13}{l}{\textit{Composite distances}} \\
+Comp-Eq & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Comp-RRF & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+\midrule
+\multicolumn{13}{l}{\textit{Individual distances}} \\
+Genetic & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Typological & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Geographic & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Script & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+ASJP & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+Wiki-size & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{176\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{32\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ & \textbf{73\textsuperscript{\dagger}} & $100.0 \pm 0.0$ \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Resource-level Mondrian conformal trial complexity for MRL targets. CTC is the mean calibrated shortlist size and HR is the near-oracle hit rate reported as mean $\pm$ one standard error. SIB-200: $n=40$; Taxi1500: $n=26$; UD-POS: $n=40$. Lower CTC is better. A dagger marks a setting in which at least one held-out fold had an infinite conformal quantile, so the valid shortlist expanded to the full candidate-source pool.}
+\label{tab:mondrian-ctc-mrl}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{1.05}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l*{12}{c}}
+\toprule
+Method
+& \multicolumn{4}{c}{SIB-200}
+& \multicolumn{4}{c}{Taxi1500}
+& \multicolumn{4}{c}{UD-POS} \\
+\cmidrule(lr){2-5}
+\cmidrule(lr){6-9}
+\cmidrule(lr){10-13}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5}
+& \multicolumn{2}{c}{XLM-R}
+& \multicolumn{2}{c}{mT5} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\cmidrule(lr){8-9}
+\cmidrule(lr){10-11}
+\cmidrule(lr){12-13}
+& CTC & HR & CTC & HR & CTC & HR & CTC & HR & CTC & HR & CTC & HR \\
+\midrule
+\multicolumn{13}{l}{\textit{Trained rankers}} \\
+LightGBM & \textbf{46} & $92.9 \pm 2.2$ & \textbf{14} & $88.6 \pm 2.7$ & \textbf{9} & $94.0 \pm 0.9$ & \textbf{11} & $91.8 \pm 1.0$ & 48 & $96.0 \pm 2.0$ & 33 & $89.1 \pm 3.1$ \\
+MLP & 59 & $90.0 \pm 2.5$ & 36 & $89.3 \pm 2.6$ & 18 & $91.6 \pm 1.0$ & 17 & $93.3 \pm 0.9$ & 45 & $95.0 \pm 2.2$ & 35 & $85.1 \pm 3.6$ \\
+\midrule
+\multicolumn{13}{l}{\textit{Composite distances}} \\
+Comp-Eq & 110 & $93.6 \pm 2.1$ & 28 & $89.3 \pm 2.6$ & 21 & $91.5 \pm 1.0$ & 23 & $90.5 \pm 1.1$ & 61 & $96.0 \pm 2.0$ & 39 & $87.1 \pm 3.3$ \\
+Comp-RRF & 133 & $95.0 \pm 1.8$ & 41 & $88.6 \pm 2.7$ & 23 & $90.8 \pm 1.1$ & 27 & $91.6 \pm 1.0$ & \textbf{36} & $92.1 \pm 2.7$ & \textbf{27} & $83.2 \pm 3.7$ \\
+\midrule
+\multicolumn{13}{l}{\textit{Individual distances}} \\
+Genetic & 160 & $97.1 \pm 1.4$ & 37 & $92.9 \pm 2.2$ & 24 & $93.6 \pm 0.9$ & 24 & $95.2 \pm 0.8$ & 43 & $91.1 \pm 2.8$ & 34 & $81.2 \pm 3.9$ \\
+Typological & 106 & $95.0 \pm 1.8$ & 27 & $88.6 \pm 2.7$ & 22 & $91.0 \pm 1.1$ & 28 & $92.7 \pm 1.0$ & 46 & $87.1 \pm 3.3$ & 41 & $92.1 \pm 2.7$ \\
+Geographic & 168 & $95.7 \pm 1.7$ & 30 & $90.0 \pm 2.5$ & 29 & $86.8 \pm 1.3$ & 29 & $93.0 \pm 0.9$ & 38 & $92.1 \pm 2.7$ & 36 & $93.1 \pm 2.5$ \\
+Script & 64 & $88.6 \pm 2.7$ & 31 & $84.3 \pm 3.1$ & 19 & $90.8 \pm 1.1$ & 18 & $92.9 \pm 1.0$ & 43 & $88.1 \pm 3.2$ & 67 & $97.0 \pm 1.7$ \\
+ASJP & 105 & $94.3 \pm 2.0$ & 27 & $89.3 \pm 2.6$ & 29 & $90.1 \pm 1.1$ & 29 & $92.2 \pm 1.0$ & 39 & $89.1 \pm 3.1$ & 50 & $88.1 \pm 3.2$ \\
+Wiki-size & 102 & $95.0 \pm 1.8$ & 27 & $87.1 \pm 2.8$ & 25 & $96.8 \pm 0.6$ & 31 & $92.2 \pm 1.0$ & 43 & $83.2 \pm 3.7$ & 62 & $93.1 \pm 2.5$ \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Resource-level Mondrian conformal trial complexity for LRL targets. CTC is the mean calibrated shortlist size and HR is the near-oracle hit rate reported as mean $\pm$ one standard error. SIB-200: $n=140$; Taxi1500: $n=730$; UD-POS: $n=101$. Lower CTC is better. A dagger marks a setting in which at least one held-out fold had an infinite conformal quantile, so the valid shortlist expanded to the full candidate-source pool.}
+\label{tab:mondrian-ctc-lrl}
+\end{table*}

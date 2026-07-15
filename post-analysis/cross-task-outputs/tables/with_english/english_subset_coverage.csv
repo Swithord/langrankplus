@@ -1,0 +1,19 @@
+dataset,held_out_task,model,model_name,metric,metric_name,n_targets_full,n_targets_with_english,n_targets_missing_english,english_available,used_in_with_english,matrix_score_column,score_scale_adjustment,n_english_above_artifact_oracle,reason
+masakhaner_mt5,masakhaner,mt5,mT5,f1_score,F1/LAS,19,0,19,False,False,f1_score,,0,no English transfer source in held-out task matrix
+opus100_mt5,opus100,mt5,mT5,bleu,BLEU,87,0,87,False,False,bleu,,0,no English transfer source in held-out task matrix
+sib200_mt5,sib200,mt5,mT5,f1_score,F1/LAS,185,185,0,True,True,f1_score,unchanged,0,
+taxi1500_mt5,taxi1500,mt5,mT5,f1_score,F1/LAS,762,762,0,True,True,f1_score,unchanged,1,
+tydiqa_mt5,tydiqa,mt5,mT5,f1_score,F1/LAS,9,9,0,True,True,f1_score,unchanged,1,
+ud_pos_mt5,ud_pos,mt5,mT5,f1_score,F1/LAS,147,147,0,True,True,f1_score,unchanged,1,
+wikiann_mt5,wikiann,mt5,mT5,f1_score,F1/LAS,144,144,0,True,True,f1_score,unchanged,1,
+xnli_mt5,xnli,mt5,mT5,f1_score,F1/LAS,15,15,0,True,True,f1_score,unchanged,1,
+xquad_mt5,xquad,mt5,mT5,f1_score,F1/LAS,12,12,0,True,True,f1_score,unchanged,0,
+masakhaner_xlm-r,masakhaner,xlm-r,XLM-R,f1_score,F1/LAS,19,0,19,False,False,f1_score,,0,no English transfer source in held-out task matrix
+sib200_xlm-r,sib200,xlm-r,XLM-R,f1_score,F1/LAS,185,185,0,True,True,f1_score,unchanged,0,
+taxi1500_xlm-r,taxi1500,xlm-r,XLM-R,f1_score,F1/LAS,762,762,0,True,True,f1_score,unchanged,0,
+tydiqa_xlm-r,tydiqa,xlm-r,XLM-R,f1_score,F1/LAS,9,9,0,True,True,f1_score,unchanged,0,
+ud_dep_xlm-r,ud_dep,xlm-r,XLM-R,las,F1/LAS,147,147,0,True,True,las,unchanged,1,
+ud_pos_xlm-r,ud_pos,xlm-r,XLM-R,f1_score,F1/LAS,147,147,0,True,True,f1_score,unchanged,1,
+wikiann_xlm-r,wikiann,xlm-r,XLM-R,f1_score,F1/LAS,144,144,0,True,True,f1_score,unchanged,1,
+xnli_xlm-r,xnli,xlm-r,XLM-R,f1_score,F1/LAS,15,15,0,True,True,f1_score,unchanged,1,
+xquad_xlm-r,xquad,xlm-r,XLM-R,f1_score,F1/LAS,12,12,0,True,True,f1_score,unchanged,0,

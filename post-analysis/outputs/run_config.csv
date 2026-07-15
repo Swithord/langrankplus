@@ -1,0 +1,2 @@
+root,outdir,n_bootstrap,seed,include_nnrank,min_ctc_targets
+/lustre09/project/6087787/khanadi7/langrankplus,/lustre09/project/6087787/khanadi7/langrankplus/post-analysis/outputs,20000,42,True,50

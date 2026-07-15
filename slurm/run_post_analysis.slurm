@@ -21,12 +21,10 @@ N_BOOTSTRAP="${N_BOOTSTRAP:-20000}"
 SEED="${SEED:-42}"
 INCLUDE_NNRANK="${INCLUDE_NNRANK:-1}"
 MIN_CTC_TARGETS="${MIN_CTC_TARGETS:-50}"
-MARKDOWN_MAX_ROWS="${MARKDOWN_MAX_ROWS:-0}"
-MARKDOWN_DIGITS="${MARKDOWN_DIGITS:-3}"
 
 export PYTHONPATH="$SLURM_SUBMIT_DIR/post-analysis:$SLURM_SUBMIT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 
-mkdir -p artifacts/logs "$OUT_DIR" "$OUT_DIR/tables" "$OUT_DIR/markdown"
+mkdir -p "$OUT_DIR"
 
 if [[ -n "$PYTHON_MODULE" ]]; then
   module load "$PYTHON_MODULE"
@@ -36,32 +34,40 @@ for mod in $EXTRA_MODULES; do
   module load "$mod"
 done
 
-if [[ -f "$VENV_PATH/bin/activate" ]]; then
-  source "$VENV_PATH/bin/activate"
-else
-  echo "No virtualenv found at $VENV_PATH"
+if [[ ! -f "$VENV_PATH/bin/activate" ]]; then
+  echo "No virtualenv found at: $VENV_PATH" >&2
   exit 1
 fi
+
+source "$VENV_PATH/bin/activate"
 
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
 export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
 export OPENBLAS_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
 export NUMEXPR_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
 
+echo "Started: $(date)"
 echo "PWD: $(pwd)"
-echo "HOST: $(hostname)"
-echo "which python: $(which python)"
+echo "Host: $(hostname)"
+echo "Python: $(which python)"
 python --version
 
-python -c "import numpy; print('numpy ok')"
-python -c "import pandas; print('pandas ok')"
+python -m py_compile \
+  post-analysis/analysis_utils.py \
+  post-analysis/run_revision_analysis.py
 
 python - <<'PY'
+import numpy
+import pandas
+
+print("numpy:", numpy.__version__)
+print("pandas:", pandas.__version__)
+
 try:
     import statsmodels
-    print("statsmodels ok")
+    print("statsmodels:", statsmodels.__version__)
 except ImportError:
-    print("WARNING: statsmodels not installed. LMM table will contain an error row.")
+    print("WARNING: statsmodels is not installed.")
 PY
 
 EXTRA_FLAGS=()
@@ -77,7 +83,7 @@ python post-analysis/run_revision_analysis.py \
   --min-ctc-targets "$MIN_CTC_TARGETS" \
   "${EXTRA_FLAGS[@]}"
 
-echo "Finished post-analysis."
-echo "CSV tables: $OUT_DIR/tables"
-echo "Markdown tables: $OUT_DIR/markdown"
-echo "Combined Markdown: $OUT_DIR/markdown/all_tables.md"
+echo "Finished: $(date)"
+echo
+echo "Generated files:"
+find "$OUT_DIR" -maxdepth 4 -type f | sort

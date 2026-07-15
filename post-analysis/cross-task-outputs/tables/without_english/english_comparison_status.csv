@@ -1,0 +1,2 @@
+analysis,variant,generated,n_english_rows,n_english_setups,reason
+Always English baseline,without_english,False,0,0,Intentionally omitted from the without-English variant.

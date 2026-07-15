@@ -1,0 +1,3 @@
+model_directory,per_query_file,n_rows,n_methods,n_held_out_tasks,n_queries
+mt5,/lustre09/project/6087787/khanadi7/langrankplus/artifacts/cross_task_generalization/mt5/per_query.csv,15180,11,9,1380
+xlm-r,/lustre09/project/6087787/khanadi7/langrankplus/artifacts/cross_task_generalization/xlm-r/per_query.csv,15840,11,9,1440

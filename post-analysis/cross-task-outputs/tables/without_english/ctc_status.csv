@@ -1,0 +1,2 @@
+analysis,variant,generated,available_columns,reason
+Mondrian CTC,without_english,False,,Not generated: cross-task per_query.csv contains no CTC outputs.
