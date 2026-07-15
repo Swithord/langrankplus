@@ -333,3 +333,28 @@ sbatch slurm/run_infer.slurm
 - `run_eval_frozen.slurm` is for cross-dataset or deployment-style evaluation.
 - `INCLUDE_CONFORMAL=1` is enabled by default in evaluation scripts.
 - `VAL_SIZE=0` makes nested composite/RRF and supervised LangRank-style rankers use the same fitting rows.
+
+
+## Running the Llama eval uses:
+
+```bash
+STAGE=train bash slurm/submit_llama.sh sib200     --base-model models/base/Llama-3.1-8B
+```
+
+for training and then 
+
+```bash
+EVAL_SHARD_SIZE=205 \
+STAGE=eval \
+bash slurm/submit_llama.sh sib200 \
+    --base-model models/base/Llama-3.1-8B
+
+
+EVAL_SHARD_SIZE=15 STAGE=eval bash slurm/submit_llama.sh xnli \
+    --base-model models/base/Llama-3.1-8B
+
+EVAL_SHARD_SIZE=176 STAGE=eval bash slurm/submit_llama.sh wikiann \
+    --base-model models/base/Llama-3.1-8B
+```
+
+for evaluation.
